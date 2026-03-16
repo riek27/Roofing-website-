@@ -310,10 +310,10 @@
             border: none;
         }
 
-        /* --- HERO SECTION --- */
+        /* --- HERO SECTION (fully mobile-optimized) --- */
         .hero {
             min-height: 100vh;
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.3)), url('https://image.qwenlm.ai/public_source/228bb3ef-22ca-46a5-84f5-c925139a8977/1ea40deca-b86b-43d3-98ff-7f931ca18c03.png');
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.4)), url('https://image.qwenlm.ai/public_source/228bb3ef-22ca-46a5-84f5-c925139a8977/1ea40deca-b86b-43d3-98ff-7f931ca18c03.png');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -328,7 +328,8 @@
             gap: 4rem;
             align-items: center;
             width: 100%;
-            padding: 8rem 0 5rem; /* increased top padding for better mobile clearance */
+            /* Massive top padding to ensure text is never near the edge on mobile */
+            padding: clamp(10rem, 25vh, 18rem) 0 5rem 0;
         }
 
         .hero-text h1 {
@@ -798,15 +799,15 @@
             color: var(--text-gray);
         }
 
-        /* --- RESPONSIVE DESIGN (IMPROVED) --- */
+        /* --- RESPONSIVE DESIGN (ULTRA-CLEAR MOBILE) --- */
         @media (max-width: 992px) {
             .hero-content { 
                 grid-template-columns: 1fr; 
                 text-align: center; 
                 gap: 3rem;
-                padding-top: 10rem; /* extra top space for mobile headers */
+                padding-top: clamp(12rem, 28vh, 20rem); /* massive top clearance */
             }
-            .hero-text h1 { font-size: clamp(2rem, 7vw, 3rem); }
+            .hero-text h1 { font-size: clamp(2.2rem, 8vw, 3.2rem); }
             .hero-text p { margin-left: auto; margin-right: auto; }
             .hero-buttons { justify-content: center; }
             .hero-form-wrapper { max-width: 550px; margin: 0 auto; width: 100%; }
@@ -855,7 +856,7 @@
 
         @media (max-width: 768px) {
             .hero-content {
-                padding-top: 12rem; /* even more space on smaller devices */
+                padding-top: clamp(14rem, 30vh, 22rem); /* even more space */
             }
             .top-bar-content { 
                 flex-direction: column; 
@@ -873,7 +874,7 @@
 
         @media (max-width: 480px) {
             .hero-content {
-                padding-top: 14rem; /* maximum spacing for very small screens */
+                padding-top: clamp(16rem, 32vh, 24rem); /* ultimate safety */
             }
             .container { padding: 0 1rem; }
             .hero-form-wrapper { padding: 1.5rem; }
@@ -882,6 +883,7 @@
             .hero-buttons { flex-direction: column; width: 100%; }
             .stats-grid { grid-template-columns: 1fr; text-align: center; }
             .contact-info-box { padding: 2rem; }
+            .hero-text h1 { font-size: 2rem; } /* slightly smaller for very small screens */
         }
 
         /* Animation */
