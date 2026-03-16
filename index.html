@@ -1,100 +1,1484 @@
-<!-- ========== index.html ========== -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-    <title>CityBuild | Home</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>James Roofing | Premier Roofing Services in Houston, Texas</title>
+    <meta name="description" content="James Roofing is Houston's trusted roofing company offering professional roof installation, repair, replacement, and storm damage services. Get a free quote today.">
+    <meta name="keywords" content="Roofing Houston, Roof Repair, Roof Replacement, Commercial Roofing, Residential Roofing, Storm Damage, James Roofing, Houston Roofers">
+    
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- CSS VARIABLES & RESET --- */
+        :root {
+            --primary-dark: #1a1a1a;
+            --primary-charcoal: #2c2c2c;
+            --accent-gold: #c5a059;
+            --accent-gold-hover: #b08d4b;
+            --text-light: #f4f4f4;
+            --text-gray: #a0a0a0;
+            --white: #ffffff;
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --glass-blur: 12px;
+            --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.15);
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Manrope', sans-serif;
+            background-color: var(--primary-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            color: var(--white);
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+            height: auto;
+        }
+
+        /* --- UTILITIES --- */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .section-padding {
+            padding: 5rem 0;
+        }
+
+        .text-center { text-align: center; }
+        .text-accent { color: var(--accent-gold); }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem 2.5rem;
+            background-color: var(--accent-gold);
+            color: var(--white);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 0.9rem;
+            min-height: 50px; /* Touch target size */
+        }
+
+        .btn:hover {
+            background-color: var(--accent-gold-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(197, 160, 89, 0.3);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 1px solid var(--white);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--white);
+            color: var(--primary-dark);
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-subtitle {
+            color: var(--accent-gold);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        /* --- TOP BAR (Responsive) --- */
+        .top-bar {
+            background-color: #000;
+            padding: 0.8rem 0;
+            font-size: 0.85rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .top-bar-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .contact-info {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-gray);
+            white-space: nowrap;
+        }
+
+        .contact-item i { color: var(--accent-gold); }
+
+        /* Removed Top Bar CTA Button as requested */
+
+        /* --- NAVIGATION --- */
+        .navbar {
+            position: absolute; /* Changed from fixed to absolute to blend with hero */
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1.5rem 0;
+            transition: var(--transition);
+            background: transparent;
+        }
+
+        .navbar.scrolled {
+            position: fixed;
+            background: rgba(26, 26, 26, 0.98);
+            backdrop-filter: blur(10px);
+            padding: 0.8rem 0;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+            animation: slideDown 0.3s ease-out;
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-100%); }
+            to { transform: translateY(0); }
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            z-index: 1001;
+        }
+
+        .logo i { color: var(--accent-gold); }
+
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-item { position: relative; }
+
+        .nav-link {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--text-light);
+            position: relative;
+            padding: 0.5rem 0;
+            cursor: pointer;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-gold);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover::after { width: 100%; }
+
+        /* Dropdown Desktop */
+        .dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: var(--primary-charcoal);
+            min-width: 220px;
+            padding: 1rem 0;
+            border-top: 2px solid var(--accent-gold);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: var(--transition);
+            box-shadow: var(--shadow-soft);
+            z-index: 1000;
+        }
+
+        .nav-item:hover .dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown li a {
+            display: block;
+            padding: 0.8rem 1.5rem;
+            color: var(--text-gray);
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+
+        .dropdown li a:hover {
+            background: rgba(255,255,255,0.05);
+            color: var(--accent-gold);
+            padding-left: 2rem;
+        }
+
+        .mobile-toggle {
+            display: none;
+            font-size: 1.5rem;
+            color: var(--white);
+            cursor: pointer;
+            z-index: 1001;
+            padding: 10px;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 100vh; /* Full viewport height */
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.3)), url('https://image.qwenlm.ai/public_source/228bb3ef-22ca-46a5-84f5-c925139a8977/1ea40deca-b86b-43d3-98ff-7f931ca18c03.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* Parallax effect */
+            display: flex;
+            align-items: center;
+            position: relative;
+            /* No padding-top needed because nav is absolute/transparent */
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 4rem;
+            align-items: center;
+            width: 100%;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+
+        .typing-container {
+            color: var(--accent-gold);
+            min-height: 1.2em;
+            display: block;
+            margin-bottom: 1rem;
+            font-family: 'Manrope', sans-serif;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 3px;
+            background-color: var(--accent-gold);
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+        .hero-text p {
+            font-size: 1.15rem;
+            color: var(--text-gray);
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        /* Glassmorphism Form */
+        .hero-form-wrapper {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(var(--glass-blur));
+            -webkit-backdrop-filter: blur(var(--glass-blur));
+            border: 1px solid var(--glass-border);
+            padding: 2.5rem;
+            border-radius: 4px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+            width: 100%;
+        }
+
+        .form-header {
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .form-header h3 { font-size: 1.8rem; margin-bottom: 0.5rem; }
+        .form-header p { color: var(--text-gray); font-size: 0.9rem; }
+
+        .form-group { margin-bottom: 1.2rem; }
+
+        .form-control {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(0,0,0,0.3);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: var(--white);
+            font-family: 'Manrope', sans-serif;
+            border-radius: 2px;
+            transition: var(--transition);
+            font-size: 1rem;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent-gold);
+            background: rgba(0,0,0,0.5);
+        }
+
+        textarea.form-control { resize: vertical; min-height: 100px; }
+
+        /* --- SERVICES SECTION --- */
+        .services { background-color: var(--primary-dark); }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background: var(--primary-charcoal);
+            border-radius: 4px;
+            overflow: hidden;
+            transition: var(--transition);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .service-img {
+            height: 220px;
+            overflow: hidden;
+            position: relative;
+            width: 100%;
+        }
+
+        .service-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .service-card:hover .service-img img { transform: scale(1.1); }
+
+        .service-content {
+            padding: 2rem;
+            position: relative;
+            z-index: 2;
+            background: var(--primary-charcoal);
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .service-icon {
+            position: absolute;
+            top: -25px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background: var(--accent-gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            color: var(--white);
+            font-size: 1.2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .service-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            font-family: 'Manrope', sans-serif;
+            font-weight: 700;
+        }
+
+        .service-card p {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .service-link {
+            color: var(--accent-gold);
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: auto;
+        }
+
+        .service-link i { transition: 0.3s; }
+        .service-link:hover i { transform: translateX(5px); }
+
+        /* --- ABOUT SECTION --- */
+        .about {
+            background-color: #222;
+            position: relative;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text h2 { font-size: 3rem; margin-bottom: 1.5rem; }
+        .about-text p { color: var(--text-gray); margin-bottom: 1.5rem; }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .stat-item h4 {
+            font-size: 2.5rem;
+            color: var(--accent-gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-item p { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; }
+
+        .about-image {
+            position: relative;
+        }
+
+        .about-image img {
+            border-radius: 4px;
+            box-shadow: var(--shadow-soft);
+            width: 100%;
+        }
+
+        .about-image::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            width: 100px;
+            height: 100px;
+            border-top: 3px solid var(--accent-gold);
+            border-left: 3px solid var(--accent-gold);
+            z-index: 1;
+        }
+
+        /* Team Section */
+        .team-section {
+            margin-top: 4rem;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .team-card {
+            background: var(--primary-charcoal);
+            border-radius: 4px;
+            overflow: hidden;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .team-card:hover { transform: translateY(-5px); }
+
+        .team-img {
+            height: 300px;
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .team-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top;
+        }
+
+        .team-info { padding: 1.5rem; }
+        .team-info h4 { font-size: 1.2rem; margin-bottom: 0.5rem; font-family: 'Manrope', sans-serif; }
+        .team-info p { color: var(--accent-gold); font-size: 0.9rem; }
+
+        /* --- PROJECTS SECTION --- */
+        .projects { background-color: var(--primary-dark); }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .project-card {
+            position: relative;
+            height: 300px;
+            overflow: hidden;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .project-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: var(--transition);
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .project-card:hover .project-overlay { opacity: 1; }
+        .project-card:hover img { transform: scale(1.1); }
+
+        .project-overlay h3 { font-size: 1.5rem; margin-bottom: 0.5rem; transform: translateY(20px); transition: 0.4s; }
+        .project-overlay p { color: var(--accent-gold); transform: translateY(20px); transition: 0.4s 0.1s; }
+
+        .project-card:hover .project-overlay h3,
+        .project-card:hover .project-overlay p { transform: translateY(0); }
+
+        /* --- SERVICE AREAS --- */
+        .service-areas {
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://image.qwenlm.ai/public_source/228bb3ef-22ca-46a5-84f5-c925139a8977/17b388ce8-2e91-426a-bef5-be78ad36f18a.png');
+            background-size: cover;
+            background-attachment: fixed;
+            text-align: center;
+        }
+
+        .areas-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 3rem;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .area-tag {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(5px);
+            padding: 0.8rem 1.5rem;
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 50px;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            cursor: default;
+        }
+
+        .area-tag:hover {
+            background: var(--accent-gold);
+            border-color: var(--accent-gold);
+            color: var(--white);
+            transform: scale(1.05);
+        }
+
+        /* --- CONTACT SECTION --- */
+        .contact { background-color: #222; }
+
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-top: 3rem;
+        }
+
+        .contact-info-box {
+            background: var(--primary-charcoal);
+            padding: 3rem;
+            border-radius: 4px;
+            height: 100%;
+        }
+
+        .info-item {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            align-items: flex-start;
+        }
+
+        .info-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(197, 160, 89, 0.1);
+            color: var(--accent-gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .info-content h4 { font-size: 1.1rem; margin-bottom: 0.5rem; font-family: 'Manrope', sans-serif; }
+        .info-content p { color: var(--text-gray); }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: #111;
+            padding-top: 5rem;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+
+        .footer-brand p {
+            color: var(--text-gray);
+            margin-top: 1.5rem;
+            font-size: 0.9rem;
+            max-width: 300px;
+        }
+
+        .footer-col h4 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            font-family: 'Manrope', sans-serif;
+            color: var(--white);
+        }
+
+        .footer-links li { margin-bottom: 0.8rem; }
+        .footer-links a { color: var(--text-gray); font-size: 0.9rem; }
+        .footer-links a:hover { color: var(--accent-gold); padding-left: 5px; }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            color: var(--white);
+            transition: var(--transition);
+        }
+
+        .social-icon:hover {
+            background: var(--accent-gold);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            background: #000;
+            padding: 1.5rem 0;
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            font-size: 0.85rem;
+            color: var(--text-gray);
+        }
+
+        /* --- RESPONSIVE DESIGN (MOBILE FIRST APPROACH) --- */
+        @media (max-width: 992px) {
+            .hero-content { 
+                grid-template-columns: 1fr; 
+                text-align: center; 
+                gap: 3rem;
+                padding-top: 80px; /* Space for scrolled nav */
+            }
+            
+            .hero-text { order: 1; }
+            .hero-form-wrapper { order: 2; max-width: 500px; margin: 0 auto; }
+            
+            .hero-text h1 { font-size: 2.8rem; }
+            .hero-text p { margin: 0 auto 2rem; }
+            .hero-buttons { justify-content: center; }
+            
+            .about-grid, .contact-wrapper { grid-template-columns: 1fr; gap: 3rem; }
+            
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+            
+            /* Mobile Menu Styles */
+            .mobile-toggle { display: block; }
+            
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 85%;
+                max-width: 400px;
+                height: 100vh;
+                background: var(--primary-charcoal);
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: flex-start;
+                padding: 6rem 2rem 2rem;
+                transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                box-shadow: -10px 0 30px rgba(0,0,0,0.5);
+                overflow-y: auto;
+                z-index: 999;
+            }
+            
+            .nav-menu.active { right: 0; }
+            
+            .nav-item { width: 100%; margin-bottom: 1rem; }
+            .nav-link { font-size: 1.2rem; display: block; padding: 0.5rem 0; }
+            
+            /* Mobile Dropdown */
+            .dropdown { 
+                position: static; 
+                opacity: 1; 
+                visibility: visible; 
+                transform: none; 
+                box-shadow: none; 
+                background: rgba(0,0,0,0.2); 
+                border: none; 
+                border-left: 2px solid var(--accent-gold);
+                padding: 0.5rem 0 0.5rem 1.5rem;
+                display: none;
+                margin-top: 0.5rem;
+            }
+            
+            .nav-item.active .dropdown { display: block; }
+            .dropdown li a { padding: 0.8rem 0; font-size: 1rem; }
+            
+            /* Chevron rotation for mobile */
+            .nav-link .fa-chevron-down {
+                float: right;
+                margin-top: 5px;
+                transition: transform 0.3s;
+            }
+            .nav-item.active .nav-link .fa-chevron-down {
+                transform: rotate(180deg);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .top-bar-content { 
+                flex-direction: column; 
+                gap: 0.8rem; 
+                text-align: center; 
+            }
+            .contact-info { 
+                flex-direction: column; 
+                gap: 0.5rem; 
+                justify-content: center;
+            }
+            .section-title { font-size: 2rem; }
+            .hero-text h1 { font-size: 2.2rem; }
+            .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+            .about-image::before { display: none; }
+            .stats-grid { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+        }
+
+        @media (max-width: 480px) {
+            .container { padding: 0 1rem; }
+            .hero { padding-top: 0; }
+            .hero-form-wrapper { padding: 1.5rem; }
+            .section-padding { padding: 3rem 0; }
+            .btn { width: 100%; justify-content: center; }
+            .hero-buttons { flex-direction: column; width: 100%; }
+            .stats-grid { grid-template-columns: 1fr; }
+        }
+
+        /* Animation Classes */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
 </head>
 <body>
-    <nav class="navbar">
-    <div class="logo">CityBuild<span>CONSTRUCTION & ENGINEERING</span></div>
-    <button class="hamburger" id="hamburger"><i class="fas fa-bars"></i></button>
-    <div class="nav-links" id="navLinks">
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="services.html">Services</a>
-        <a href="gallery.html">Gallery</a>
-        <a href="contact.html">Contact</a>
-    </div>
-</nav>
 
-    <section class="hero" style="background: url('https://images.unsplash.com/photo-1541976590-713941681591?q=80&w=1974&auto=format&fit=crop') no-repeat center center/cover; background-attachment: scroll;">
-        <div class="hero-content">
-            <h1>Building the Future with Strength & Precision</h1>
-            <p>Professional Construction & Engineering Services in Juba, South Sudan</p>
-            <div class="hero-buttons">
-                <a href="services.html" class="btn btn-outline">Our Services</a>
-                <a href="contact.html" class="btn">Get Quotes</a>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container top-bar-content">
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-phone-alt"></i>
+                    <span>(713) 555-0198</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Houston, Texas</span>
+                </div>
+            </div>
+            <!-- Removed Get Quote Button from here as requested -->
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <i class="fas fa-home"></i> James Roofing
+            </a>
+            <div class="mobile-toggle" id="mobile-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li class="nav-item"><a href="#home" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
+                <li class="nav-item has-dropdown">
+                    <a href="#services" class="nav-link">Services <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropdown">
+                        <li><a href="#">Roof Installation</a></li>
+                        <li><a href="#">Roof Replacement</a></li>
+                        <li><a href="#">Storm Damage</a></li>
+                        <li><a href="#">Commercial Roofing</a></li>
+                        <li><a href="#">Gutter Installation</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a href="#projects" class="nav-link">Projects</a></li>
+                <li class="nav-item has-dropdown">
+                    <a href="#areas" class="nav-link">Service Areas <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropdown">
+                        <li><a href="#">Houston</a></li>
+                        <li><a href="#">Katy</a></li>
+                        <li><a href="#">Sugar Land</a></li>
+                        <li><a href="#">The Woodlands</a></li>
+                        <li><a href="#">Pearland</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+                <li class="nav-item" style="margin-top: 1rem;">
+                    <a href="#contact" class="btn" style="width: 100%; text-align: center;">Get Quote</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container hero-content">
+            <div class="hero-text fade-in">
+                <h1>
+                    <span class="typing-container"></span><span class="cursor">&nbsp;</span><br>
+                    Excellence in Every Shingle
+                </h1>
+                <p>Reliable residential and commercial roofing services across Houston, Texas. We protect your biggest investment with premium materials and expert craftsmanship.</p>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn">Get a Quote</a>
+                    <a href="#projects" class="btn btn-outline">View Our Work</a>
+                </div>
+            </div>
+            
+            <div class="hero-form-wrapper fade-in">
+                <div class="form-header">
+                    <h3>Request a Quote</h3>
+                    <p>Fast, free estimates for your roofing needs.</p>
+                </div>
+                <form id="quote-form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Full Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" class="form-control" placeholder="Phone Number" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" class="form-control" placeholder="Email Address" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control" placeholder="Tell us about your project..." rows="4"></textarea>
+                    </div>
+                    <button type="submit" class="btn" style="width: 100%;">Submit Request</button>
+                </form>
             </div>
         </div>
     </section>
 
-    <div class="container">
-        <div style="text-align: center; margin: 2.5rem 1rem;">
-            <p style="font-size: 1.1rem;">CityBuild Construction and Engineering Co. Ltd stands as a beacon of excellence in Juba. We merge timeless craftsmanship with modern innovation.</p>
-        </div>
-
-        <div class="features-grid">
-            <div class="feature-card"><i class="fas fa-gem"></i><h3>Quality Workmanship</h3><p>Meticulous attention to detail and premium materials.</p></div>
-            <div class="feature-card"><i class="fas fa-crown"></i><h3>Experienced Team</h3><p>World‑class architects and engineers.</p></div>
-            <div class="feature-card"><i class="fas fa-shield-alt"></i><h3>Reliable & Durable</h3><p>Built to withstand time and elements.</p></div>
-        </div>
-
-        <!-- About summary -->
-        <div class="about-grid" style="margin: 3rem 0;">
-            <div>
-                <h2>About CityBuild</h2>
-                <p style="margin-bottom: 1.5rem;">With over a decade of experience, we have completed landmark projects across Juba. Our commitment to excellence sets us apart.</p>
-                <a href="about.html" class="btn">Learn More</a>
+    <!-- Services Section -->
+    <section class="section-padding services" id="services">
+        <div class="container">
+            <div class="text-center fade-in">
+                <span class="section-subtitle">Our Expertise</span>
+                <h2 class="section-title">Premium Roofing Services</h2>
             </div>
-            <div class="about-image"><img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=1974&auto=format&fit=crop" alt="About CityBuild"></div>
-        </div>
+            
+            <div class="services-grid">
+                <!-- Service 1 -->
+                <div class="service-card fade-in">
+                    <div class="service-img">
+                        <img src="https://image.qwenlm.ai/public_source/228bb3ef-22ca-46a5-84f5-c925139a8977/112d7f7a3-736d-4686-b265-4be56c11c6df.png" alt="Shingle Roofing">
+                    </div>
+                    <div class="service-content">
+                        <div class="service-icon"><i class="fas fa-home"></i></div>
+                        <h3>Shingle Roofing</h3>
+                        <p>High-quality asphalt shingle installation and replacement designed to withstand Houston's harsh weather conditions.</p>
+                        <a href="#" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
 
-        <!-- Why Choose Us -->
-        <div style="margin: 3rem 0;">
-            <h2 class="text-center">Why Choose Us</h2>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap: 1.5rem; margin-top: 2rem;">
-                <div style="background: var(--cream); padding: 2rem; border-radius: 20px;"><i class="fas fa-medal gold-text" style="font-size:2.5rem;"></i><h3>20+ Years</h3><p>Experience</p></div>
-                <div style="background: var(--cream); padding: 2rem; border-radius: 20px;"><i class="fas fa-clock gold-text" style="font-size:2.5rem;"></i><h3>On Time</h3><p>Delivery guaranteed</p></div>
-                <div style="background: var(--cream); padding: 2rem; border-radius: 20px;"><i class="fas fa-handshake gold-text" style="font-size:2.5rem;"></i><h3>100% Satisfaction</h3><p>Repeat clients</p></div>
+                <!-- Service 2 -->
+                <div class="service-card fade-in">
+                    <div class="service-img">
+                        <img src="https://image.qwenlm.ai/public_source/228bb3ef-22ca-46a5-84f5-c925139a8977/1a3c9f056-2465-4ee3-8139-c9514e05e0da.png" alt="Metal Roofing">
+                    </div>
+                    <div class="service-content">
+                        <div class="service-icon"><i class="fas fa-layer-group"></i></div>
+                        <h3>Metal Roofing</h3>
+                        <p>Durable, energy-efficient standing seam metal roofs that offer modern aesthetics and long-term protection.</p>
+                        <a href="#" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="service-card fade-in">
+                    <div class="service-img">
+                        <img src="https://image.qwenlm.ai/public_source/228bb3ef-22ca-46a5-84f5-c925139a8977/137811c98-2a63-4be0-b567-d4071a3db876.png" alt="Commercial Roofing">
+                    </div>
+                    <div class="service-content">
+                        <div class="service-icon"><i class="fas fa-building"></i></div>
+                        <h3>Commercial Roofing</h3>
+                        <p>Comprehensive flat roofing solutions for businesses, including TPO, EPDM, and modified bitumen systems.</p>
+                        <a href="#" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="service-card fade-in">
+                    <div class="service-img">
+                        <img src="https://image.qwenlm.ai/public_source/228bb3ef-22ca-46a5-84f5-c925139a8977/17b388ce8-2e91-426a-bef5-be78ad36f18a.png" alt="Roof Repair">
+                    </div>
+                    <div class="service-content">
+                        <div class="service-icon"><i class="fas fa-tools"></i></div>
+                        <h3>Roof Repair</h3>
+                        <p>Expert leak detection and repair services to extend the life of your existing roof and prevent water damage.</p>
+                        <a href="#" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Service 5 -->
+                <div class="service-card fade-in">
+                    <div class="service-img">
+                        <img src="https://image.qwenlm.ai/public_source/228bb3ef-22ca-46a5-84f5-c925139a8977/1ea40deca-b86b-43d3-98ff-7f931ca18c03.png" alt="Storm Damage">
+                    </div>
+                    <div class="service-content">
+                        <div class="service-icon"><i class="fas fa-cloud-showers-heavy"></i></div>
+                        <h3>Storm Damage</h3>
+                        <p>Emergency response and insurance claim assistance for roofs damaged by hail, wind, and severe storms.</p>
+                        <a href="#" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Service 6 -->
+                <div class="service-card fade-in">
+                    <div class="service-img">
+                        <img src="https://image.qwenlm.ai/public_source/228bb3ef-22ca-46a5-84f5-c925139a8977/1c5f50fa3-9718-42d3-8f61-9acd81dd8cb1.png" alt="Inspections">
+                    </div>
+                    <div class="service-content">
+                        <div class="service-icon"><i class="fas fa-clipboard-check"></i></div>
+                        <h3>Roof Inspections</h3>
+                        <p>Thorough annual inspections to identify potential issues before they become costly repairs.</p>
+                        <a href="#" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
             </div>
         </div>
+    </section>
 
-        <!-- CTA -->
-        <div class="cta-common">
-            <h2>Let's Build Something Great Together</h2>
-            <a href="contact.html" class="btn">Get a Quote</a>
-        </div>
-
-        <!-- Gallery preview -->
-        <div style="margin: 3rem 0;">
-            <h2 class="text-center">Recent Projects</h2>
-            <div class="gallery-grid" style="margin: 2rem 0;">
-                <div class="gallery-item"><img src="assets/homes.jpg" alt="Project 1"></div>
-                <div class="gallery-item"><img src="assets/modem.jpg" alt="Project 2"></div>
-                <div class="gallery-item"><img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=2070&auto=format&fit=crop" alt="Project 3"></div>
+    <!-- About Section -->
+    <section class="section-padding about" id="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-text fade-in">
+                    <span class="section-subtitle">About James Roofing</span>
+                    <h2>Houston's Most Trusted Roofing Contractors</h2>
+                    <p>With over 20 years of experience serving the Greater Houston area, James Roofing has established a reputation for excellence, integrity, and superior craftsmanship. We don't just install roofs; we build peace of mind.</p>
+                    <p>Our team of certified professionals uses only the highest quality materials to ensure your home or business is protected against the elements. From minor repairs to complete roof replacements, we treat every project with the same level of dedication.</p>
+                    
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <h4>20+</h4>
+                            <p>Years Experience</p>
+                        </div>
+                        <div class="stat-item">
+                            <h4>5k+</h4>
+                            <p>Projects Completed</p>
+                        </div>
+                        <div class="stat-item">
+                            <h4>100%</h4>
+                            <p>Satisfaction Guarantee</p>
+                        </div>
+                        <div class="stat-item">
+                            <h4>24/7</h4>
+                            <p>Emergency Service</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image fade-in">
+                    <img src="https://image.qwenlm.ai/public_source/228bb3ef-22ca-46a5-84f5-c925139a8977/1e5fb29d5-9ffc-402c-90c7-50bdf27e4dc5.png" alt="Project Manager">
+                </div>
             </div>
-            <div class="text-center"><a href="gallery.html" class="btn">See All Gallery</a></div>
-        </div>
-    </div>
 
+            <!-- Team Grid -->
+            <div class="team-section fade-in">
+                <div class="text-center" style="margin-bottom: 2rem;">
+                    <h3>Meet Our Team</h3>
+                </div>
+                <div class="team-grid">
+                    <div class="team-card">
+                        <div class="team-img">
+                            <img src="https://image.qwenlm.ai/public_source/228bb3ef-22ca-46a5-84f5-c925139a8977/1c5f50fa3-9718-42d3-8f61-9acd81dd8cb1.png" alt="James Founder">
+                        </div>
+                        <div class="team-info">
+                            <h4>James Miller</h4>
+                            <p>Founder & CEO</p>
+                        </div>
+                    </div>
+                    <div class="team-card">
+                        <div class="team-img">
+                            <img src="https://image.qwenlm.ai/public_source/228bb3ef-22ca-46a5-84f5-c925139a8977/1e5fb29d5-9ffc-402c-90c7-50bdf27e4dc5.png" alt="Project Manager">
+                        </div>
+                        <div class="team-info">
+                            <h4>David Chen</h4>
+                            <p>Lead Project Manager</p>
+                        </div>
+                    </div>
+                    <div class="team-card">
+                        <div class="team-img">
+                            <img src="https://image.qwenlm.ai/public_source/228bb3ef-22ca-46a5-84f5-c925139a8977/137811c98-2a63-4be0-b567-d4071a3db876.png" alt="Safety Specialist">
+                        </div>
+                        <div class="team-info">
+                            <h4>Robert Johnson</h4>
+                            <p>Safety Director</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="section-padding projects" id="projects">
+        <div class="container">
+            <div class="text-center fade-in">
+                <span class="section-subtitle">Our Portfolio</span>
+                <h2 class="section-title">Recent Projects</h2>
+            </div>
+            
+            <div class="projects-grid">
+                <div class="project-card fade-in">
+                    <img src="https://image.qwenlm.ai/public_source/228bb3ef-22ca-46a5-84f5-c925139a8977/17b388ce8-2e91-426a-bef5-be78ad36f18a.png" alt="Project 1">
+                    <div class="project-overlay">
+                        <h3>The Woodlands Residence</h3>
+                        <p>Full Roof Replacement</p>
+                    </div>
+                </div>
+                <div class="project-card fade-in">
+                    <img src="https://image.qwenlm.ai/public_source/228bb3ef-22ca-46a5-84f5-c925139a8977/1ea40deca-b86b-43d3-98ff-7f931ca18c03.png" alt="Project 2">
+                    <div class="project-overlay">
+                        <h3>Katy Luxury Home</h3>
+                        <p>Premium Shingle Installation</p>
+                    </div>
+                </div>
+                <div class="project-card fade-in">
+                    <img src="https://image.qwenlm.ai/public_source/228bb3ef-22ca-46a5-84f5-c925139a8977/1a3c9f056-2465-4ee3-8139-c9514e05e0da.png" alt="Project 3">
+                    <div class="project-overlay">
+                        <h3>Modern Office Complex</h3>
+                        <p>Standing Seam Metal Roof</p>
+                    </div>
+                </div>
+                <div class="project-card fade-in">
+                    <img src="https://image.qwenlm.ai/public_source/228bb3ef-22ca-46a5-84f5-c925139a8977/137811c98-2a63-4be0-b567-d4071a3db876.png" alt="Project 4">
+                    <div class="project-overlay">
+                        <h3>Industrial Warehouse</h3>
+                        <p>Commercial Flat Roofing</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center" style="margin-top: 3rem;">
+                <a href="#" class="btn btn-outline">View All Projects</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Service Areas -->
+    <section class="section-padding service-areas" id="areas">
+        <div class="container fade-in">
+            <span class="section-subtitle">Where We Work</span>
+            <h2 class="section-title">Serving Greater Houston</h2>
+            <p style="color: #ddd; max-width: 600px; margin: 1rem auto;">We proudly provide top-tier roofing services to homeowners and businesses throughout the Houston metropolitan area.</p>
+            
+            <div class="areas-list">
+                <span class="area-tag">Houston</span>
+                <span class="area-tag">Katy</span>
+                <span class="area-tag">Sugar Land</span>
+                <span class="area-tag">The Woodlands</span>
+                <span class="area-tag">Pearland</span>
+                <span class="area-tag">Cypress</span>
+                <span class="area-tag">Pasadena</span>
+                <span class="area-tag">Spring</span>
+                <span class="area-tag">Missouri City</span>
+                <span class="area-tag">Baytown</span>
+                <span class="area-tag">Memorial</span>
+                <span class="area-tag">River Oaks</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section-padding contact" id="contact">
+        <div class="container">
+            <div class="text-center fade-in">
+                <span class="section-subtitle">Get In Touch</span>
+                <h2 class="section-title">Contact Us</h2>
+            </div>
+            
+            <div class="contact-wrapper">
+                <div class="contact-info-box fade-in">
+                    <div class="info-item">
+                        <div class="info-icon"><i class="fas fa-phone-alt"></i></div>
+                        <div class="info-content">
+                            <h4>Phone Number</h4>
+                            <p>(713) 555-0198</p>
+                            <p style="font-size: 0.8rem; margin-top: 0.5rem;">Available 24/7 for emergencies</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon"><i class="fas fa-envelope"></i></div>
+                        <div class="info-content">
+                            <h4>Email Address</h4>
+                            <p>info@jamesroofing.com</p>
+                            <p style="font-size: 0.8rem; margin-top: 0.5rem;">Response within 24 hours</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon"><i class="fas fa-map-marked-alt"></i></div>
+                        <div class="info-content">
+                            <h4>Office Location</h4>
+                            <p>1234 Roofing Blvd, Suite 100<br>Houston, TX 77002</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon"><i class="fas fa-clock"></i></div>
+                        <div class="info-content">
+                            <h4>Business Hours</h4>
+                            <p>Mon - Fri: 8:00 AM - 6:00 PM<br>Sat: 9:00 AM - 2:00 PM</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="fade-in">
+                    <form style="background: var(--primary-charcoal); padding: 3rem; border-radius: 4px;">
+                        <h3 style="margin-bottom: 1.5rem; font-family: 'Manrope', sans-serif;">Send a Message</h3>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Your Name">
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="Your Email">
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" class="form-control" placeholder="Your Phone">
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" placeholder="Message" rows="5"></textarea>
+                        </div>
+                        <button type="submit" class="btn" style="width: 100%;">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
     <footer>
-        <div class="footer-grid">
-            <div><div class="footer-logo">CityBuild<span>Construction & Engineering</span></div></div>
-            <div class="footer-links"><h4 style="color:var(--gold);">Quick Links</h4><a href="index.html">Home</a><a href="about.html">About</a><a href="services.html">Services</a><a href="gallery.html">Gallery</a><a href="contact.html">Contact</a></div>
-            <div class="footer-links"><h4 style="color:var(--gold);">Contact</h4><p><i class="fas fa-phone"></i> +211 924 555 436</p><p><i class="fab fa-whatsapp"></i> +256 777 218 912</p><p><i class="fas fa-envelope"></i> info@citybuildcoltd.com</p></div>
-            <div><h4 style="color:var(--gold);">Follow</h4><div class="social-icons"><a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-twitter"></i></a><a href="#"><i class="fab fa-linkedin-in"></i></a><a href="#"><i class="fab fa-instagram"></i></a></div></div>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#" class="logo">
+                        <i class="fas fa-home"></i> James Roofing
+                    </a>
+                    <p>Providing Houston with premium roofing solutions since 2003. Quality, integrity, and customer satisfaction are our top priorities.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#projects">Projects</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Services</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Residential Roofing</a></li>
+                        <li><a href="#">Commercial Roofing</a></li>
+                        <li><a href="#">Roof Repair</a></li>
+                        <li><a href="#">Storm Damage</a></li>
+                        <li><a href="#">Gutter Installation</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Service Areas</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Houston</a></li>
+                        <li><a href="#">Katy</a></li>
+                        <li><a href="#">Sugar Land</a></li>
+                        <li><a href="#">The Woodlands</a></li>
+                        <li><a href="#">Pearland</a></li>
+                    </ul>
+                </div>
+            </div>
         </div>
-        <div class="copyright">© 2026 CityBuild Construction and Engineering Co. Ltd. All Rights Reserved.</div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p>&copy; 2023 James Roofing. All Rights Reserved. Designed for Excellence.</p>
+            </div>
+        </div>
     </footer>
 
-    <div id="lightbox" class="lightbox"><span class="lightbox-close">&times;</span><img id="lightbox-img" src="" alt=""></div>
-    <script src="script.js"></script>
+    <script>
+        // --- TYPING ANIMATION ---
+        const textElement = document.querySelector('.typing-container');
+        const phrases = [
+            "Professional Roofing Experts",
+            "Houston's Trusted Roofing Company",
+            "Quality Roof Installation & Repair",
+            "Built to Protect Your Home"
+        ];
+        
+        let phraseIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        let typeSpeed = 100;
+
+        function type() {
+            const currentPhrase = phrases[phraseIndex];
+            
+            if (isDeleting) {
+                textElement.textContent = currentPhrase.substring(0, charIndex - 1);
+                charIndex--;
+                typeSpeed = 50; 
+            } else {
+                textElement.textContent = currentPhrase.substring(0, charIndex + 1);
+                charIndex++;
+                typeSpeed = 100;
+            }
+
+            if (!isDeleting && charIndex === currentPhrase.length) {
+                isDeleting = true;
+                typeSpeed = 2000; // Pause at end
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                phraseIndex = (phraseIndex + 1) % phrases.length;
+                typeSpeed = 500; // Pause before new word
+            }
+
+            setTimeout(type, typeSpeed);
+        }
+
+        document.addEventListener('DOMContentLoaded', type);
+
+        // --- STICKY NAVIGATION ---
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // --- MOBILE MENU TOGGLE ---
+        const mobileToggle = document.getElementById('mobile-toggle');
+        const navMenu = document.getElementById('nav-menu');
+        const navItemsWithDropdown = document.querySelectorAll('.has-dropdown');
+
+        mobileToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            const icon = mobileToggle.querySelector('i');
+            if (navMenu.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+                document.body.style.overflow = 'hidden'; // Prevent scrolling when menu open
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // Close mobile menu when clicking a link (that isn't a dropdown toggle)
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', (e) => {
+                // If it's a dropdown toggle on mobile, don't close menu immediately
+                if(window.innerWidth <= 992 && link.parentElement.classList.contains('has-dropdown')) {
+                   // Handled by separate click event below
+                } else {
+                    navMenu.classList.remove('active');
+                    mobileToggle.querySelector('i').classList.remove('fa-times');
+                    mobileToggle.querySelector('i').classList.add('fa-bars');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        });
+
+        // Mobile Dropdown Toggle Logic
+        if (window.innerWidth <= 992) {
+            navItemsWithDropdown.forEach(item => {
+                item.querySelector('.nav-link').addEventListener('click', (e) => {
+                    e.preventDefault(); // Prevent navigation
+                    item.classList.toggle('active');
+                });
+            });
+        }
+
+        // --- SCROLL ANIMATIONS (INTERSECTION OBSERVER) ---
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // --- FORM SUBMISSION HANDLER (PREVENT DEFAULT) ---
+        const forms = document.querySelectorAll('form');
+        forms.forEach(form => {
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                alert('Thank you for your message! We will contact you shortly.');
+                form.reset();
+            });
+        });
+
+        // Handle window resize to reset mobile menu state if needed
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 992) {
+                navMenu.classList.remove('active');
+                mobileToggle.querySelector('i').classList.remove('fa-times');
+                mobileToggle.querySelector('i').classList.add('fa-bars');
+                document.body.style.overflow = 'auto';
+                navItemsWithDropdown.forEach(item => item.classList.remove('active'));
+            }
+        });
+    </script>
 </body>
 </html>
+
