@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <title>James Roofing | Premier Roofing Services in Houston, Texas</title>
     <meta name="description" content="James Roofing is Houston's trusted roofing company offering professional roof installation, repair, replacement, and storm damage services. Get a free quote today.">
     <meta name="keywords" content="Roofing Houston, Roof Repair, Roof Replacement, Commercial Roofing, Residential Roofing, Storm Damage, James Roofing, Houston Roofers">
@@ -52,6 +52,12 @@
             -webkit-font-smoothing: antialiased;
         }
 
+        /* focus styles for accessibility */
+        :focus-visible {
+            outline: 2px solid var(--accent-gold);
+            outline-offset: 4px;
+        }
+
         h1, h2, h3, h4, h5, h6 {
             font-family: 'Playfair Display', serif;
             color: var(--white);
@@ -80,6 +86,7 @@
             max-width: 1280px;
             margin: 0 auto;
             padding: 0 1.5rem;
+            width: 100%;
         }
 
         .section-padding {
@@ -103,7 +110,8 @@
             cursor: pointer;
             transition: var(--transition);
             font-size: 0.9rem;
-            min-height: 50px; /* Touch target size */
+            min-height: 50px;
+            border-radius: 2px;
         }
 
         .btn:hover {
@@ -123,7 +131,7 @@
         }
 
         .section-title {
-            font-size: 2.5rem;
+            font-size: clamp(2rem, 5vw, 2.5rem);
             margin-bottom: 1rem;
             position: relative;
             display: inline-block;
@@ -152,6 +160,7 @@
             justify-content: space-between;
             align-items: center;
             gap: 1rem;
+            flex-wrap: wrap;
         }
 
         .contact-info {
@@ -171,11 +180,9 @@
 
         .contact-item i { color: var(--accent-gold); }
 
-        /* Removed Top Bar CTA Button as requested */
-
         /* --- NAVIGATION --- */
         .navbar {
-            position: absolute; /* Changed from fixed to absolute to blend with hero */
+            position: absolute;
             top: 0;
             left: 0;
             width: 100%;
@@ -207,7 +214,7 @@
 
         .logo {
             font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
+            font-size: clamp(1.5rem, 4vw, 1.8rem);
             font-weight: 700;
             color: var(--white);
             display: flex;
@@ -233,6 +240,9 @@
             position: relative;
             padding: 0.5rem 0;
             cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
         }
 
         .nav-link::after {
@@ -246,7 +256,8 @@
             transition: var(--transition);
         }
 
-        .nav-link:hover::after { width: 100%; }
+        .nav-link:hover::after,
+        .nav-link:focus-visible::after { width: 100%; }
 
         /* Dropdown Desktop */
         .dropdown {
@@ -265,7 +276,8 @@
             z-index: 1000;
         }
 
-        .nav-item:hover .dropdown {
+        .nav-item:hover .dropdown,
+        .nav-item:focus-within .dropdown {
             opacity: 1;
             visibility: visible;
             transform: translateY(0);
@@ -279,10 +291,12 @@
             transition: 0.3s;
         }
 
-        .dropdown li a:hover {
+        .dropdown li a:hover,
+        .dropdown li a:focus-visible {
             background: rgba(255,255,255,0.05);
             color: var(--accent-gold);
             padding-left: 2rem;
+            outline: none;
         }
 
         .mobile-toggle {
@@ -292,19 +306,20 @@
             cursor: pointer;
             z-index: 1001;
             padding: 10px;
+            background: transparent;
+            border: none;
         }
 
         /* --- HERO SECTION --- */
         .hero {
-            height: 100vh; /* Full viewport height */
+            min-height: 100vh; /* flexible for mobile */
             background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.3)), url('https://image.qwenlm.ai/public_source/228bb3ef-22ca-46a5-84f5-c925139a8977/1ea40deca-b86b-43d3-98ff-7f931ca18c03.png');
             background-size: cover;
             background-position: center;
-            background-attachment: fixed; /* Parallax effect */
+            background-attachment: fixed;
             display: flex;
             align-items: center;
             position: relative;
-            /* No padding-top needed because nav is absolute/transparent */
         }
 
         .hero-content {
@@ -313,10 +328,11 @@
             gap: 4rem;
             align-items: center;
             width: 100%;
+            padding: 6rem 0 4rem; /* extra space for nav */
         }
 
         .hero-text h1 {
-            font-size: 3.5rem;
+            font-size: clamp(2.2rem, 6vw, 3.5rem);
             line-height: 1.1;
             margin-bottom: 1.5rem;
         }
@@ -324,8 +340,7 @@
         .typing-container {
             color: var(--accent-gold);
             min-height: 1.2em;
-            display: block;
-            margin-bottom: 1rem;
+            display: inline-block;
             font-family: 'Manrope', sans-serif;
             font-weight: 600;
             text-transform: uppercase;
@@ -337,6 +352,7 @@
             width: 3px;
             background-color: var(--accent-gold);
             animation: blink 1s infinite;
+            margin-left: 2px;
         }
 
         @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
@@ -354,7 +370,6 @@
             flex-wrap: wrap;
         }
 
-        /* Glassmorphism Form */
         .hero-form-wrapper {
             background: rgba(255, 255, 255, 0.08);
             backdrop-filter: blur(var(--glass-blur));
@@ -401,7 +416,7 @@
 
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 2rem;
             margin-top: 3rem;
         }
@@ -504,7 +519,7 @@
             align-items: center;
         }
 
-        .about-text h2 { font-size: 3rem; margin-bottom: 1.5rem; }
+        .about-text h2 { font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 1.5rem; }
         .about-text p { color: var(--text-gray); margin-bottom: 1.5rem; }
 
         .stats-grid {
@@ -551,7 +566,7 @@
         
         .team-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
             gap: 2rem;
             margin-top: 2rem;
         }
@@ -588,14 +603,14 @@
 
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 1.5rem;
             margin-top: 3rem;
         }
 
         .project-card {
             position: relative;
-            height: 300px;
+            height: 280px;
             overflow: hidden;
             border-radius: 4px;
             cursor: pointer;
@@ -626,14 +641,18 @@
             text-align: center;
         }
 
-        .project-card:hover .project-overlay { opacity: 1; }
-        .project-card:hover img { transform: scale(1.1); }
+        .project-card:hover .project-overlay,
+        .project-card:focus-within .project-overlay { opacity: 1; }
+        .project-card:hover img,
+        .project-card:focus-within img { transform: scale(1.1); }
 
         .project-overlay h3 { font-size: 1.5rem; margin-bottom: 0.5rem; transform: translateY(20px); transition: 0.4s; }
         .project-overlay p { color: var(--accent-gold); transform: translateY(20px); transition: 0.4s 0.1s; }
 
         .project-card:hover .project-overlay h3,
-        .project-card:hover .project-overlay p { transform: translateY(0); }
+        .project-card:hover .project-overlay p,
+        .project-card:focus-within .project-overlay h3,
+        .project-card:focus-within .project-overlay p { transform: translateY(0); }
 
         /* --- SERVICE AREAS --- */
         .service-areas {
@@ -742,7 +761,8 @@
 
         .footer-links li { margin-bottom: 0.8rem; }
         .footer-links a { color: var(--text-gray); font-size: 0.9rem; }
-        .footer-links a:hover { color: var(--accent-gold); padding-left: 5px; }
+        .footer-links a:hover,
+        .footer-links a:focus-visible { color: var(--accent-gold); padding-left: 5px; outline: none; }
 
         .social-links {
             display: flex;
@@ -762,9 +782,11 @@
             transition: var(--transition);
         }
 
-        .social-icon:hover {
+        .social-icon:hover,
+        .social-icon:focus-visible {
             background: var(--accent-gold);
             transform: translateY(-3px);
+            outline: none;
         }
 
         .footer-bottom {
@@ -776,53 +798,43 @@
             color: var(--text-gray);
         }
 
-        /* --- RESPONSIVE DESIGN (MOBILE FIRST APPROACH) --- */
+        /* --- RESPONSIVE DESIGN (IMPROVED) --- */
         @media (max-width: 992px) {
             .hero-content { 
                 grid-template-columns: 1fr; 
                 text-align: center; 
                 gap: 3rem;
-                padding-top: 80px; /* Space for scrolled nav */
+                padding-top: 6rem;
             }
-            
-            .hero-text { order: 1; }
-            .hero-form-wrapper { order: 2; max-width: 500px; margin: 0 auto; }
-            
-            .hero-text h1 { font-size: 2.8rem; }
-            .hero-text p { margin: 0 auto 2rem; }
+            .hero-text h1 { font-size: clamp(2rem, 7vw, 3rem); }
+            .hero-text p { margin-left: auto; margin-right: auto; }
             .hero-buttons { justify-content: center; }
-            
+            .hero-form-wrapper { max-width: 550px; margin: 0 auto; width: 100%; }
+
             .about-grid, .contact-wrapper { grid-template-columns: 1fr; gap: 3rem; }
-            
-            .footer-grid { grid-template-columns: 1fr 1fr; }
-            
-            /* Mobile Menu Styles */
+            .footer-grid { grid-template-columns: repeat(2, 1fr); }
+
+            /* Mobile Navigation */
             .mobile-toggle { display: block; }
-            
             .nav-menu {
                 position: fixed;
                 top: 0;
                 right: -100%;
-                width: 85%;
-                max-width: 400px;
+                width: min(85%, 400px);
                 height: 100vh;
                 background: var(--primary-charcoal);
                 flex-direction: column;
                 align-items: flex-start;
-                justify-content: flex-start;
                 padding: 6rem 2rem 2rem;
-                transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
                 box-shadow: -10px 0 30px rgba(0,0,0,0.5);
                 overflow-y: auto;
                 z-index: 999;
+                display: flex;
             }
-            
             .nav-menu.active { right: 0; }
-            
             .nav-item { width: 100%; margin-bottom: 1rem; }
-            .nav-link { font-size: 1.2rem; display: block; padding: 0.5rem 0; }
-            
-            /* Mobile Dropdown */
+            .nav-link { font-size: 1.2rem; justify-content: space-between; width: 100%; }
             .dropdown { 
                 position: static; 
                 opacity: 1; 
@@ -832,54 +844,41 @@
                 background: rgba(0,0,0,0.2); 
                 border: none; 
                 border-left: 2px solid var(--accent-gold);
-                padding: 0.5rem 0 0.5rem 1.5rem;
+                padding: 0.5rem 0 0.5rem 1rem;
                 display: none;
                 margin-top: 0.5rem;
+                width: 100%;
             }
-            
             .nav-item.active .dropdown { display: block; }
-            .dropdown li a { padding: 0.8rem 0; font-size: 1rem; }
-            
-            /* Chevron rotation for mobile */
-            .nav-link .fa-chevron-down {
-                float: right;
-                margin-top: 5px;
-                transition: transform 0.3s;
-            }
-            .nav-item.active .nav-link .fa-chevron-down {
-                transform: rotate(180deg);
-            }
+            .dropdown li a { padding: 0.8rem 0; }
         }
 
         @media (max-width: 768px) {
             .top-bar-content { 
                 flex-direction: column; 
-                gap: 0.8rem; 
-                text-align: center; 
+                gap: 0.5rem; 
             }
             .contact-info { 
-                flex-direction: column; 
-                gap: 0.5rem; 
                 justify-content: center;
             }
-            .section-title { font-size: 2rem; }
-            .hero-text h1 { font-size: 2.2rem; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
             .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
             .about-image::before { display: none; }
-            .stats-grid { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+            .hero { background-attachment: scroll; } /* performance fix */
+            .service-areas { background-attachment: scroll; }
         }
 
         @media (max-width: 480px) {
             .container { padding: 0 1rem; }
-            .hero { padding-top: 0; }
             .hero-form-wrapper { padding: 1.5rem; }
             .section-padding { padding: 3rem 0; }
             .btn { width: 100%; justify-content: center; }
             .hero-buttons { flex-direction: column; width: 100%; }
-            .stats-grid { grid-template-columns: 1fr; }
+            .stats-grid { grid-template-columns: 1fr; text-align: center; }
+            .contact-info-box { padding: 2rem; }
         }
 
-        /* Animation Classes */
+        /* Animation */
         .fade-in {
             opacity: 0;
             transform: translateY(30px);
@@ -897,34 +896,23 @@
     <div class="top-bar">
         <div class="container top-bar-content">
             <div class="contact-info">
-                <div class="contact-item">
-                    <i class="fas fa-phone-alt"></i>
-                    <span>(713) 555-0198</span>
-                </div>
-                <div class="contact-item">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <span>Houston, Texas</span>
-                </div>
+                <div class="contact-item"><i class="fas fa-phone-alt"></i><span>(713) 555-0198</span></div>
+                <div class="contact-item"><i class="fas fa-map-marker-alt"></i><span>Houston, Texas</span></div>
             </div>
-            <!-- Removed Get Quote Button from here as requested -->
         </div>
     </div>
 
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
         <div class="container nav-container">
-            <a href="#" class="logo">
-                <i class="fas fa-home"></i> James Roofing
-            </a>
-            <div class="mobile-toggle" id="mobile-toggle">
-                <i class="fas fa-bars"></i>
-            </div>
+            <a href="#" class="logo" aria-label="James Roofing home"><i class="fas fa-home"></i> James Roofing</a>
+            <button class="mobile-toggle" id="mobile-toggle" aria-label="Menu" aria-expanded="false"><i class="fas fa-bars"></i></button>
             <ul class="nav-menu" id="nav-menu">
                 <li class="nav-item"><a href="#home" class="nav-link">Home</a></li>
                 <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
                 <li class="nav-item has-dropdown">
-                    <a href="#services" class="nav-link">Services <i class="fas fa-chevron-down"></i></a>
-                    <ul class="dropdown">
+                    <a href="#services" class="nav-link" aria-haspopup="true">Services <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropdown" aria-label="submenu">
                         <li><a href="#">Roof Installation</a></li>
                         <li><a href="#">Roof Replacement</a></li>
                         <li><a href="#">Storm Damage</a></li>
@@ -934,8 +922,8 @@
                 </li>
                 <li class="nav-item"><a href="#projects" class="nav-link">Projects</a></li>
                 <li class="nav-item has-dropdown">
-                    <a href="#areas" class="nav-link">Service Areas <i class="fas fa-chevron-down"></i></a>
-                    <ul class="dropdown">
+                    <a href="#areas" class="nav-link" aria-haspopup="true">Service Areas <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropdown" aria-label="submenu">
                         <li><a href="#">Houston</a></li>
                         <li><a href="#">Katy</a></li>
                         <li><a href="#">Sugar Land</a></li>
@@ -944,9 +932,7 @@
                     </ul>
                 </li>
                 <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
-                <li class="nav-item" style="margin-top: 1rem;">
-                    <a href="#contact" class="btn" style="width: 100%; text-align: center;">Get Quote</a>
-                </li>
+                <li class="nav-item"><a href="#contact" class="btn" style="width:100%;">Get Quote</a></li>
             </ul>
         </div>
     </nav>
@@ -956,7 +942,7 @@
         <div class="container hero-content">
             <div class="hero-text fade-in">
                 <h1>
-                    <span class="typing-container"></span><span class="cursor">&nbsp;</span><br>
+                    <span class="typing-container"></span><span class="cursor"></span><br>
                     Excellence in Every Shingle
                 </h1>
                 <p>Reliable residential and commercial roofing services across Houston, Texas. We protect your biggest investment with premium materials and expert craftsmanship.</p>
@@ -972,19 +958,11 @@
                     <p>Fast, free estimates for your roofing needs.</p>
                 </div>
                 <form id="quote-form">
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Full Name" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="tel" class="form-control" placeholder="Phone Number" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="email" class="form-control" placeholder="Email Address" required>
-                    </div>
-                    <div class="form-group">
-                        <textarea class="form-control" placeholder="Tell us about your project..." rows="4"></textarea>
-                    </div>
-                    <button type="submit" class="btn" style="width: 100%;">Submit Request</button>
+                    <div class="form-group"><input type="text" class="form-control" placeholder="Full Name" name="name" required></div>
+                    <div class="form-group"><input type="tel" class="form-control" placeholder="Phone Number" name="phone" required></div>
+                    <div class="form-group"><input type="email" class="form-control" placeholder="Email Address" name="email" required></div>
+                    <div class="form-group"><textarea class="form-control" placeholder="Tell us about your project..." name="message" rows="4"></textarea></div>
+                    <button type="submit" class="btn" style="width:100%;">Submit Request</button>
                 </form>
             </div>
         </div>
@@ -997,84 +975,36 @@
                 <span class="section-subtitle">Our Expertise</span>
                 <h2 class="section-title">Premium Roofing Services</h2>
             </div>
-            
             <div class="services-grid">
                 <!-- Service 1 -->
                 <div class="service-card fade-in">
-                    <div class="service-img">
-                        <img src="https://image.qwenlm.ai/public_source/228bb3ef-22ca-46a5-84f5-c925139a8977/112d7f7a3-736d-4686-b265-4be56c11c6df.png" alt="Shingle Roofing">
-                    </div>
-                    <div class="service-content">
-                        <div class="service-icon"><i class="fas fa-home"></i></div>
-                        <h3>Shingle Roofing</h3>
-                        <p>High-quality asphalt shingle installation and replacement designed to withstand Houston's harsh weather conditions.</p>
-                        <a href="#" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
-                    </div>
+                    <div class="service-img"><img src="https://image.qwenlm.ai/public_source/228bb3ef-22ca-46a5-84f5-c925139a8977/112d7f7a3-736d-4686-b265-4be56c11c6df.png" alt="Asphalt shingle roofing installation on a residential home"></div>
+                    <div class="service-content"><div class="service-icon"><i class="fas fa-home"></i></div><h3>Shingle Roofing</h3><p>High-quality asphalt shingle installation and replacement designed to withstand Houston's harsh weather conditions.</p><a href="#" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a></div>
                 </div>
-
                 <!-- Service 2 -->
                 <div class="service-card fade-in">
-                    <div class="service-img">
-                        <img src="https://image.qwenlm.ai/public_source/228bb3ef-22ca-46a5-84f5-c925139a8977/1a3c9f056-2465-4ee3-8139-c9514e05e0da.png" alt="Metal Roofing">
-                    </div>
-                    <div class="service-content">
-                        <div class="service-icon"><i class="fas fa-layer-group"></i></div>
-                        <h3>Metal Roofing</h3>
-                        <p>Durable, energy-efficient standing seam metal roofs that offer modern aesthetics and long-term protection.</p>
-                        <a href="#" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
-                    </div>
+                    <div class="service-img"><img src="https://image.qwenlm.ai/public_source/228bb3ef-22ca-46a5-84f5-c925139a8977/1a3c9f056-2465-4ee3-8139-c9514e05e0da.png" alt="Standing seam metal roofing on modern house"></div>
+                    <div class="service-content"><div class="service-icon"><i class="fas fa-layer-group"></i></div><h3>Metal Roofing</h3><p>Durable, energy-efficient standing seam metal roofs that offer modern aesthetics and long-term protection.</p><a href="#" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a></div>
                 </div>
-
                 <!-- Service 3 -->
                 <div class="service-card fade-in">
-                    <div class="service-img">
-                        <img src="https://image.qwenlm.ai/public_source/228bb3ef-22ca-46a5-84f5-c925139a8977/137811c98-2a63-4be0-b567-d4071a3db876.png" alt="Commercial Roofing">
-                    </div>
-                    <div class="service-content">
-                        <div class="service-icon"><i class="fas fa-building"></i></div>
-                        <h3>Commercial Roofing</h3>
-                        <p>Comprehensive flat roofing solutions for businesses, including TPO, EPDM, and modified bitumen systems.</p>
-                        <a href="#" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
-                    </div>
+                    <div class="service-img"><img src="https://image.qwenlm.ai/public_source/228bb3ef-22ca-46a5-84f5-c925139a8977/137811c98-2a63-4be0-b567-d4071a3db876.png" alt="Commercial flat roof with TPO membrane"></div>
+                    <div class="service-content"><div class="service-icon"><i class="fas fa-building"></i></div><h3>Commercial Roofing</h3><p>Comprehensive flat roofing solutions for businesses, including TPO, EPDM, and modified bitumen systems.</p><a href="#" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a></div>
                 </div>
-
                 <!-- Service 4 -->
                 <div class="service-card fade-in">
-                    <div class="service-img">
-                        <img src="https://image.qwenlm.ai/public_source/228bb3ef-22ca-46a5-84f5-c925139a8977/17b388ce8-2e91-426a-bef5-be78ad36f18a.png" alt="Roof Repair">
-                    </div>
-                    <div class="service-content">
-                        <div class="service-icon"><i class="fas fa-tools"></i></div>
-                        <h3>Roof Repair</h3>
-                        <p>Expert leak detection and repair services to extend the life of your existing roof and prevent water damage.</p>
-                        <a href="#" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
-                    </div>
+                    <div class="service-img"><img src="https://image.qwenlm.ai/public_source/228bb3ef-22ca-46a5-84f5-c925139a8977/17b388ce8-2e91-426a-bef5-be78ad36f18a.png" alt="Roofer repairing damaged shingles"></div>
+                    <div class="service-content"><div class="service-icon"><i class="fas fa-tools"></i></div><h3>Roof Repair</h3><p>Expert leak detection and repair services to extend the life of your existing roof and prevent water damage.</p><a href="#" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a></div>
                 </div>
-
                 <!-- Service 5 -->
                 <div class="service-card fade-in">
-                    <div class="service-img">
-                        <img src="https://image.qwenlm.ai/public_source/228bb3ef-22ca-46a5-84f5-c925139a8977/1ea40deca-b86b-43d3-98ff-7f931ca18c03.png" alt="Storm Damage">
-                    </div>
-                    <div class="service-content">
-                        <div class="service-icon"><i class="fas fa-cloud-showers-heavy"></i></div>
-                        <h3>Storm Damage</h3>
-                        <p>Emergency response and insurance claim assistance for roofs damaged by hail, wind, and severe storms.</p>
-                        <a href="#" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
-                    </div>
+                    <div class="service-img"><img src="https://image.qwenlm.ai/public_source/228bb3ef-22ca-46a5-84f5-c925139a8977/1ea40deca-b86b-43d3-98ff-7f931ca18c03.png" alt="Roof with storm damage and missing shingles"></div>
+                    <div class="service-content"><div class="service-icon"><i class="fas fa-cloud-showers-heavy"></i></div><h3>Storm Damage</h3><p>Emergency response and insurance claim assistance for roofs damaged by hail, wind, and severe storms.</p><a href="#" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a></div>
                 </div>
-
                 <!-- Service 6 -->
                 <div class="service-card fade-in">
-                    <div class="service-img">
-                        <img src="https://image.qwenlm.ai/public_source/228bb3ef-22ca-46a5-84f5-c925139a8977/1c5f50fa3-9718-42d3-8f61-9acd81dd8cb1.png" alt="Inspections">
-                    </div>
-                    <div class="service-content">
-                        <div class="service-icon"><i class="fas fa-clipboard-check"></i></div>
-                        <h3>Roof Inspections</h3>
-                        <p>Thorough annual inspections to identify potential issues before they become costly repairs.</p>
-                        <a href="#" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
-                    </div>
+                    <div class="service-img"><img src="https://image.qwenlm.ai/public_source/228bb3ef-22ca-46a5-84f5-c925139a8977/1c5f50fa3-9718-42d3-8f61-9acd81dd8cb1.png" alt="Roof inspector checking shingles"></div>
+                    <div class="service-content"><div class="service-icon"><i class="fas fa-clipboard-check"></i></div><h3>Roof Inspections</h3><p>Thorough annual inspections to identify potential issues before they become costly repairs.</p><a href="#" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a></div>
                 </div>
             </div>
         </div>
@@ -1089,64 +1019,23 @@
                     <h2>Houston's Most Trusted Roofing Contractors</h2>
                     <p>With over 20 years of experience serving the Greater Houston area, James Roofing has established a reputation for excellence, integrity, and superior craftsmanship. We don't just install roofs; we build peace of mind.</p>
                     <p>Our team of certified professionals uses only the highest quality materials to ensure your home or business is protected against the elements. From minor repairs to complete roof replacements, we treat every project with the same level of dedication.</p>
-                    
                     <div class="stats-grid">
-                        <div class="stat-item">
-                            <h4>20+</h4>
-                            <p>Years Experience</p>
-                        </div>
-                        <div class="stat-item">
-                            <h4>5k+</h4>
-                            <p>Projects Completed</p>
-                        </div>
-                        <div class="stat-item">
-                            <h4>100%</h4>
-                            <p>Satisfaction Guarantee</p>
-                        </div>
-                        <div class="stat-item">
-                            <h4>24/7</h4>
-                            <p>Emergency Service</p>
-                        </div>
+                        <div class="stat-item"><h4>20+</h4><p>Years Experience</p></div>
+                        <div class="stat-item"><h4>5k+</h4><p>Projects Completed</p></div>
+                        <div class="stat-item"><h4>100%</h4><p>Satisfaction Guarantee</p></div>
+                        <div class="stat-item"><h4>24/7</h4><p>Emergency Service</p></div>
                     </div>
                 </div>
                 <div class="about-image fade-in">
-                    <img src="https://image.qwenlm.ai/public_source/228bb3ef-22ca-46a5-84f5-c925139a8977/1e5fb29d5-9ffc-402c-90c7-50bdf27e4dc5.png" alt="Project Manager">
+                    <img src="https://image.qwenlm.ai/public_source/228bb3ef-22ca-46a5-84f5-c925139a8977/1e5fb29d5-9ffc-402c-90c7-50bdf27e4dc5.png" alt="James Roofing project manager on site">
                 </div>
             </div>
-
-            <!-- Team Grid -->
             <div class="team-section fade-in">
-                <div class="text-center" style="margin-bottom: 2rem;">
-                    <h3>Meet Our Team</h3>
-                </div>
+                <div class="text-center" style="margin-bottom:2rem;"><h3>Meet Our Team</h3></div>
                 <div class="team-grid">
-                    <div class="team-card">
-                        <div class="team-img">
-                            <img src="https://image.qwenlm.ai/public_source/228bb3ef-22ca-46a5-84f5-c925139a8977/1c5f50fa3-9718-42d3-8f61-9acd81dd8cb1.png" alt="James Founder">
-                        </div>
-                        <div class="team-info">
-                            <h4>James Miller</h4>
-                            <p>Founder & CEO</p>
-                        </div>
-                    </div>
-                    <div class="team-card">
-                        <div class="team-img">
-                            <img src="https://image.qwenlm.ai/public_source/228bb3ef-22ca-46a5-84f5-c925139a8977/1e5fb29d5-9ffc-402c-90c7-50bdf27e4dc5.png" alt="Project Manager">
-                        </div>
-                        <div class="team-info">
-                            <h4>David Chen</h4>
-                            <p>Lead Project Manager</p>
-                        </div>
-                    </div>
-                    <div class="team-card">
-                        <div class="team-img">
-                            <img src="https://image.qwenlm.ai/public_source/228bb3ef-22ca-46a5-84f5-c925139a8977/137811c98-2a63-4be0-b567-d4071a3db876.png" alt="Safety Specialist">
-                        </div>
-                        <div class="team-info">
-                            <h4>Robert Johnson</h4>
-                            <p>Safety Director</p>
-                        </div>
-                    </div>
+                    <div class="team-card"><div class="team-img"><img src="https://image.qwenlm.ai/public_source/228bb3ef-22ca-46a5-84f5-c925139a8977/1c5f50fa3-9718-42d3-8f61-9acd81dd8cb1.png" alt="James Miller, Founder and CEO"></div><div class="team-info"><h4>James Miller</h4><p>Founder & CEO</p></div></div>
+                    <div class="team-card"><div class="team-img"><img src="https://image.qwenlm.ai/public_source/228bb3ef-22ca-46a5-84f5-c925139a8977/1e5fb29d5-9ffc-402c-90c7-50bdf27e4dc5.png" alt="David Chen, Lead Project Manager"></div><div class="team-info"><h4>David Chen</h4><p>Lead Project Manager</p></div></div>
+                    <div class="team-card"><div class="team-img"><img src="https://image.qwenlm.ai/public_source/228bb3ef-22ca-46a5-84f5-c925139a8977/137811c98-2a63-4be0-b567-d4071a3db876.png" alt="Robert Johnson, Safety Director"></div><div class="team-info"><h4>Robert Johnson</h4><p>Safety Director</p></div></div>
                 </div>
             </div>
         </div>
@@ -1155,45 +1044,14 @@
     <!-- Projects Section -->
     <section class="section-padding projects" id="projects">
         <div class="container">
-            <div class="text-center fade-in">
-                <span class="section-subtitle">Our Portfolio</span>
-                <h2 class="section-title">Recent Projects</h2>
-            </div>
-            
+            <div class="text-center fade-in"><span class="section-subtitle">Our Portfolio</span><h2 class="section-title">Recent Projects</h2></div>
             <div class="projects-grid">
-                <div class="project-card fade-in">
-                    <img src="https://image.qwenlm.ai/public_source/228bb3ef-22ca-46a5-84f5-c925139a8977/17b388ce8-2e91-426a-bef5-be78ad36f18a.png" alt="Project 1">
-                    <div class="project-overlay">
-                        <h3>The Woodlands Residence</h3>
-                        <p>Full Roof Replacement</p>
-                    </div>
-                </div>
-                <div class="project-card fade-in">
-                    <img src="https://image.qwenlm.ai/public_source/228bb3ef-22ca-46a5-84f5-c925139a8977/1ea40deca-b86b-43d3-98ff-7f931ca18c03.png" alt="Project 2">
-                    <div class="project-overlay">
-                        <h3>Katy Luxury Home</h3>
-                        <p>Premium Shingle Installation</p>
-                    </div>
-                </div>
-                <div class="project-card fade-in">
-                    <img src="https://image.qwenlm.ai/public_source/228bb3ef-22ca-46a5-84f5-c925139a8977/1a3c9f056-2465-4ee3-8139-c9514e05e0da.png" alt="Project 3">
-                    <div class="project-overlay">
-                        <h3>Modern Office Complex</h3>
-                        <p>Standing Seam Metal Roof</p>
-                    </div>
-                </div>
-                <div class="project-card fade-in">
-                    <img src="https://image.qwenlm.ai/public_source/228bb3ef-22ca-46a5-84f5-c925139a8977/137811c98-2a63-4be0-b567-d4071a3db876.png" alt="Project 4">
-                    <div class="project-overlay">
-                        <h3>Industrial Warehouse</h3>
-                        <p>Commercial Flat Roofing</p>
-                    </div>
-                </div>
+                <div class="project-card fade-in"><img src="https://image.qwenlm.ai/public_source/228bb3ef-22ca-46a5-84f5-c925139a8977/17b388ce8-2e91-426a-bef5-be78ad36f18a.png" alt="Completed roof replacement in The Woodlands"><div class="project-overlay"><h3>The Woodlands Residence</h3><p>Full Roof Replacement</p></div></div>
+                <div class="project-card fade-in"><img src="https://image.qwenlm.ai/public_source/228bb3ef-22ca-46a5-84f5-c925139a8977/1ea40deca-b86b-43d3-98ff-7f931ca18c03.png" alt="Luxury shingle roof installation in Katy"><div class="project-overlay"><h3>Katy Luxury Home</h3><p>Premium Shingle Installation</p></div></div>
+                <div class="project-card fade-in"><img src="https://image.qwenlm.ai/public_source/228bb3ef-22ca-46a5-84f5-c925139a8977/1a3c9f056-2465-4ee3-8139-c9514e05e0da.png" alt="Standing seam metal roof on office complex"><div class="project-overlay"><h3>Modern Office Complex</h3><p>Standing Seam Metal Roof</p></div></div>
+                <div class="project-card fade-in"><img src="https://image.qwenlm.ai/public_source/228bb3ef-22ca-46a5-84f5-c925139a8977/137811c98-2a63-4be0-b567-d4071a3db876.png" alt="Industrial warehouse flat roofing project"><div class="project-overlay"><h3>Industrial Warehouse</h3><p>Commercial Flat Roofing</p></div></div>
             </div>
-            
-            <div class="text-center" style="margin-top: 3rem;">
-                <a href="#" class="btn btn-outline">View All Projects</a>
-            </div>
+            <div class="text-center" style="margin-top:3rem;"><a href="#" class="btn btn-outline">View All Projects</a></div>
         </div>
     </section>
 
@@ -1202,21 +1060,9 @@
         <div class="container fade-in">
             <span class="section-subtitle">Where We Work</span>
             <h2 class="section-title">Serving Greater Houston</h2>
-            <p style="color: #ddd; max-width: 600px; margin: 1rem auto;">We proudly provide top-tier roofing services to homeowners and businesses throughout the Houston metropolitan area.</p>
-            
+            <p style="color:#ddd; max-width:600px; margin:1rem auto;">We proudly provide top-tier roofing services to homeowners and businesses throughout the Houston metropolitan area.</p>
             <div class="areas-list">
-                <span class="area-tag">Houston</span>
-                <span class="area-tag">Katy</span>
-                <span class="area-tag">Sugar Land</span>
-                <span class="area-tag">The Woodlands</span>
-                <span class="area-tag">Pearland</span>
-                <span class="area-tag">Cypress</span>
-                <span class="area-tag">Pasadena</span>
-                <span class="area-tag">Spring</span>
-                <span class="area-tag">Missouri City</span>
-                <span class="area-tag">Baytown</span>
-                <span class="area-tag">Memorial</span>
-                <span class="area-tag">River Oaks</span>
+                <span class="area-tag">Houston</span><span class="area-tag">Katy</span><span class="area-tag">Sugar Land</span><span class="area-tag">The Woodlands</span><span class="area-tag">Pearland</span><span class="area-tag">Cypress</span><span class="area-tag">Pasadena</span><span class="area-tag">Spring</span><span class="area-tag">Missouri City</span><span class="area-tag">Baytown</span><span class="area-tag">Memorial</span><span class="area-tag">River Oaks</span>
             </div>
         </div>
     </section>
@@ -1224,61 +1070,22 @@
     <!-- Contact Section -->
     <section class="section-padding contact" id="contact">
         <div class="container">
-            <div class="text-center fade-in">
-                <span class="section-subtitle">Get In Touch</span>
-                <h2 class="section-title">Contact Us</h2>
-            </div>
-            
+            <div class="text-center fade-in"><span class="section-subtitle">Get In Touch</span><h2 class="section-title">Contact Us</h2></div>
             <div class="contact-wrapper">
                 <div class="contact-info-box fade-in">
-                    <div class="info-item">
-                        <div class="info-icon"><i class="fas fa-phone-alt"></i></div>
-                        <div class="info-content">
-                            <h4>Phone Number</h4>
-                            <p>(713) 555-0198</p>
-                            <p style="font-size: 0.8rem; margin-top: 0.5rem;">Available 24/7 for emergencies</p>
-                        </div>
-                    </div>
-                    <div class="info-item">
-                        <div class="info-icon"><i class="fas fa-envelope"></i></div>
-                        <div class="info-content">
-                            <h4>Email Address</h4>
-                            <p>info@jamesroofing.com</p>
-                            <p style="font-size: 0.8rem; margin-top: 0.5rem;">Response within 24 hours</p>
-                        </div>
-                    </div>
-                    <div class="info-item">
-                        <div class="info-icon"><i class="fas fa-map-marked-alt"></i></div>
-                        <div class="info-content">
-                            <h4>Office Location</h4>
-                            <p>1234 Roofing Blvd, Suite 100<br>Houston, TX 77002</p>
-                        </div>
-                    </div>
-                    <div class="info-item">
-                        <div class="info-icon"><i class="fas fa-clock"></i></div>
-                        <div class="info-content">
-                            <h4>Business Hours</h4>
-                            <p>Mon - Fri: 8:00 AM - 6:00 PM<br>Sat: 9:00 AM - 2:00 PM</p>
-                        </div>
-                    </div>
+                    <div class="info-item"><div class="info-icon"><i class="fas fa-phone-alt"></i></div><div class="info-content"><h4>Phone Number</h4><p>(713) 555-0198</p><p style="font-size:0.8rem;">Available 24/7 for emergencies</p></div></div>
+                    <div class="info-item"><div class="info-icon"><i class="fas fa-envelope"></i></div><div class="info-content"><h4>Email Address</h4><p>info@jamesroofing.com</p><p style="font-size:0.8rem;">Response within 24 hours</p></div></div>
+                    <div class="info-item"><div class="info-icon"><i class="fas fa-map-marked-alt"></i></div><div class="info-content"><h4>Office Location</h4><p>1234 Roofing Blvd, Suite 100<br>Houston, TX 77002</p></div></div>
+                    <div class="info-item"><div class="info-icon"><i class="fas fa-clock"></i></div><div class="info-content"><h4>Business Hours</h4><p>Mon - Fri: 8:00 AM - 6:00 PM<br>Sat: 9:00 AM - 2:00 PM</p></div></div>
                 </div>
-                
                 <div class="fade-in">
                     <form style="background: var(--primary-charcoal); padding: 3rem; border-radius: 4px;">
-                        <h3 style="margin-bottom: 1.5rem; font-family: 'Manrope', sans-serif;">Send a Message</h3>
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Your Name">
-                        </div>
-                        <div class="form-group">
-                            <input type="email" class="form-control" placeholder="Your Email">
-                        </div>
-                        <div class="form-group">
-                            <input type="tel" class="form-control" placeholder="Your Phone">
-                        </div>
-                        <div class="form-group">
-                            <textarea class="form-control" placeholder="Message" rows="5"></textarea>
-                        </div>
-                        <button type="submit" class="btn" style="width: 100%;">Send Message</button>
+                        <h3 style="margin-bottom:1.5rem; font-family:'Manrope',sans-serif;">Send a Message</h3>
+                        <div class="form-group"><input type="text" class="form-control" placeholder="Your Name" name="name"></div>
+                        <div class="form-group"><input type="email" class="form-control" placeholder="Your Email" name="email"></div>
+                        <div class="form-group"><input type="tel" class="form-control" placeholder="Your Phone" name="phone"></div>
+                        <div class="form-group"><textarea class="form-control" placeholder="Message" name="message" rows="5"></textarea></div>
+                        <button type="submit" class="btn" style="width:100%;">Send Message</button>
                     </form>
                 </div>
             </div>
@@ -1289,196 +1096,152 @@
     <footer>
         <div class="container">
             <div class="footer-grid">
-                <div class="footer-brand">
-                    <a href="#" class="logo">
-                        <i class="fas fa-home"></i> James Roofing
-                    </a>
-                    <p>Providing Houston with premium roofing solutions since 2003. Quality, integrity, and customer satisfaction are our top priorities.</p>
-                    <div class="social-links">
-                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
-                    </div>
-                </div>
-                
-                <div class="footer-col">
-                    <h4>Quick Links</h4>
-                    <ul class="footer-links">
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#about">About Us</a></li>
-                        <li><a href="#services">Services</a></li>
-                        <li><a href="#projects">Projects</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-col">
-                    <h4>Services</h4>
-                    <ul class="footer-links">
-                        <li><a href="#">Residential Roofing</a></li>
-                        <li><a href="#">Commercial Roofing</a></li>
-                        <li><a href="#">Roof Repair</a></li>
-                        <li><a href="#">Storm Damage</a></li>
-                        <li><a href="#">Gutter Installation</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-col">
-                    <h4>Service Areas</h4>
-                    <ul class="footer-links">
-                        <li><a href="#">Houston</a></li>
-                        <li><a href="#">Katy</a></li>
-                        <li><a href="#">Sugar Land</a></li>
-                        <li><a href="#">The Woodlands</a></li>
-                        <li><a href="#">Pearland</a></li>
-                    </ul>
-                </div>
+                <div class="footer-brand"><a href="#" class="logo"><i class="fas fa-home"></i> James Roofing</a><p>Providing Houston with premium roofing solutions since 2003. Quality, integrity, and customer satisfaction are our top priorities.</p><div class="social-links"><a href="#" class="social-icon" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a><a href="#" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a><a href="#" class="social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a><a href="#" class="social-icon" aria-label="Twitter"><i class="fab fa-twitter"></i></a></div></div>
+                <div class="footer-col"><h4>Quick Links</h4><ul class="footer-links"><li><a href="#home">Home</a></li><li><a href="#about">About Us</a></li><li><a href="#services">Services</a></li><li><a href="#projects">Projects</a></li><li><a href="#contact">Contact</a></li></ul></div>
+                <div class="footer-col"><h4>Services</h4><ul class="footer-links"><li><a href="#">Residential Roofing</a></li><li><a href="#">Commercial Roofing</a></li><li><a href="#">Roof Repair</a></li><li><a href="#">Storm Damage</a></li><li><a href="#">Gutter Installation</a></li></ul></div>
+                <div class="footer-col"><h4>Service Areas</h4><ul class="footer-links"><li><a href="#">Houston</a></li><li><a href="#">Katy</a></li><li><a href="#">Sugar Land</a></li><li><a href="#">The Woodlands</a></li><li><a href="#">Pearland</a></li></ul></div>
             </div>
         </div>
-        <div class="footer-bottom">
-            <div class="container">
-                <p>&copy; 2023 James Roofing. All Rights Reserved. Designed for Excellence.</p>
-            </div>
-        </div>
+        <div class="footer-bottom"><div class="container"><p>&copy; 2025 James Roofing. All Rights Reserved. Designed for Excellence.</p></div></div>
     </footer>
 
     <script>
-        // --- TYPING ANIMATION ---
-        const textElement = document.querySelector('.typing-container');
-        const phrases = [
-            "Professional Roofing Experts",
-            "Houston's Trusted Roofing Company",
-            "Quality Roof Installation & Repair",
-            "Built to Protect Your Home"
-        ];
-        
-        let phraseIndex = 0;
-        let charIndex = 0;
-        let isDeleting = false;
-        let typeSpeed = 100;
-
-        function type() {
-            const currentPhrase = phrases[phraseIndex];
-            
-            if (isDeleting) {
-                textElement.textContent = currentPhrase.substring(0, charIndex - 1);
-                charIndex--;
-                typeSpeed = 50; 
-            } else {
-                textElement.textContent = currentPhrase.substring(0, charIndex + 1);
-                charIndex++;
-                typeSpeed = 100;
+        (function() {
+            // Typing animation
+            const textElement = document.querySelector('.typing-container');
+            if (textElement) {
+                const phrases = [
+                    "Professional Roofing Experts",
+                    "Houston's Trusted Roofing Company",
+                    "Quality Roof Installation & Repair",
+                    "Built to Protect Your Home"
+                ];
+                let phraseIndex = 0, charIndex = 0, isDeleting = false, typeSpeed = 100;
+                function type() {
+                    const currentPhrase = phrases[phraseIndex];
+                    if (isDeleting) {
+                        textElement.textContent = currentPhrase.substring(0, charIndex - 1);
+                        charIndex--;
+                        typeSpeed = 50;
+                    } else {
+                        textElement.textContent = currentPhrase.substring(0, charIndex + 1);
+                        charIndex++;
+                        typeSpeed = 100;
+                    }
+                    if (!isDeleting && charIndex === currentPhrase.length) {
+                        isDeleting = true;
+                        typeSpeed = 2000;
+                    } else if (isDeleting && charIndex === 0) {
+                        isDeleting = false;
+                        phraseIndex = (phraseIndex + 1) % phrases.length;
+                        typeSpeed = 500;
+                    }
+                    setTimeout(type, typeSpeed);
+                }
+                type();
             }
 
-            if (!isDeleting && charIndex === currentPhrase.length) {
-                isDeleting = true;
-                typeSpeed = 2000; // Pause at end
-            } else if (isDeleting && charIndex === 0) {
-                isDeleting = false;
-                phraseIndex = (phraseIndex + 1) % phrases.length;
-                typeSpeed = 500; // Pause before new word
-            }
+            // Sticky nav
+            const navbar = document.getElementById('navbar');
+            window.addEventListener('scroll', () => {
+                navbar.classList.toggle('scrolled', window.scrollY > 50);
+            });
 
-            setTimeout(type, typeSpeed);
-        }
+            // Mobile menu elements
+            const mobileToggle = document.getElementById('mobile-toggle');
+            const navMenu = document.getElementById('nav-menu');
+            const dropdownParents = document.querySelectorAll('.has-dropdown');
+            const body = document.body;
 
-        document.addEventListener('DOMContentLoaded', type);
+            // Helper to close menu
+            const closeMenu = () => {
+                navMenu.classList.remove('active');
+                mobileToggle.querySelector('i').className = 'fas fa-bars';
+                mobileToggle.setAttribute('aria-expanded', 'false');
+                body.style.overflow = '';
+            };
 
-        // --- STICKY NAVIGATION ---
-        const navbar = document.getElementById('navbar');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
+            // Toggle menu
+            mobileToggle.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const isActive = navMenu.classList.toggle('active');
+                mobileToggle.querySelector('i').className = isActive ? 'fas fa-times' : 'fas fa-bars';
+                mobileToggle.setAttribute('aria-expanded', isActive);
+                body.style.overflow = isActive ? 'hidden' : '';
+            });
 
-        // --- MOBILE MENU TOGGLE ---
-        const mobileToggle = document.getElementById('mobile-toggle');
-        const navMenu = document.getElementById('nav-menu');
-        const navItemsWithDropdown = document.querySelectorAll('.has-dropdown');
-
-        mobileToggle.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-            const icon = mobileToggle.querySelector('i');
-            if (navMenu.classList.contains('active')) {
-                icon.classList.remove('fa-bars');
-                icon.classList.add('fa-times');
-                document.body.style.overflow = 'hidden'; // Prevent scrolling when menu open
-            } else {
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
-                document.body.style.overflow = 'auto';
-            }
-        });
-
-        // Close mobile menu when clicking a link (that isn't a dropdown toggle)
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', (e) => {
-                // If it's a dropdown toggle on mobile, don't close menu immediately
-                if(window.innerWidth <= 992 && link.parentElement.classList.contains('has-dropdown')) {
-                   // Handled by separate click event below
-                } else {
-                    navMenu.classList.remove('active');
-                    mobileToggle.querySelector('i').classList.remove('fa-times');
-                    mobileToggle.querySelector('i').classList.add('fa-bars');
-                    document.body.style.overflow = 'auto';
+            // Close on outside click
+            document.addEventListener('click', (e) => {
+                if (navMenu.classList.contains('active') && !navMenu.contains(e.target) && !mobileToggle.contains(e.target)) {
+                    closeMenu();
                 }
             });
-        });
 
-        // Mobile Dropdown Toggle Logic
-        if (window.innerWidth <= 992) {
-            navItemsWithDropdown.forEach(item => {
-                item.querySelector('.nav-link').addEventListener('click', (e) => {
-                    e.preventDefault(); // Prevent navigation
-                    item.classList.toggle('active');
+            // Mobile dropdown toggle & resize handling
+            function initMobileDropdowns() {
+                const isMobile = window.innerWidth <= 992;
+                dropdownParents.forEach(item => {
+                    const link = item.querySelector('.nav-link');
+                    if (!link) return;
+                    // Remove old listener by cloning (simplify: we'll use a flag)
+                    link.removeEventListener('click', mobileDropdownHandler);
+                    if (isMobile) {
+                        link.addEventListener('click', mobileDropdownHandler);
+                    }
+                });
+            }
+
+            function mobileDropdownHandler(e) {
+                e.preventDefault();
+                const parent = this.closest('.has-dropdown');
+                if (parent) parent.classList.toggle('active');
+            }
+
+            window.addEventListener('resize', () => {
+                if (window.innerWidth > 992) {
+                    // reset any open mobile dropdowns
+                    dropdownParents.forEach(p => p.classList.remove('active'));
+                    closeMenu();
+                } else {
+                    initMobileDropdowns();
+                }
+            });
+
+            // Initialize based on current width
+            initMobileDropdowns();
+
+            // Smooth close when clicking a nav link that is not dropdown
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    const parent = link.closest('.has-dropdown');
+                    if (window.innerWidth <= 992 && parent) {
+                        // handled by mobileDropdownHandler
+                    } else {
+                        closeMenu();
+                    }
                 });
             });
-        }
 
-        // --- SCROLL ANIMATIONS (INTERSECTION OBSERVER) ---
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: "0px 0px -50px 0px"
-        };
+            // Intersection Observer for fade-in
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+            document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
-                }
+            // Form submission alert
+            document.querySelectorAll('form').forEach(form => {
+                form.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    alert('Thank you for your message! We will contact you shortly.');
+                    form.reset();
+                });
             });
-        }, observerOptions);
-
-        document.querySelectorAll('.fade-in').forEach(el => {
-            observer.observe(el);
-        });
-
-        // --- FORM SUBMISSION HANDLER (PREVENT DEFAULT) ---
-        const forms = document.querySelectorAll('form');
-        forms.forEach(form => {
-            form.addEventListener('submit', (e) => {
-                e.preventDefault();
-                alert('Thank you for your message! We will contact you shortly.');
-                form.reset();
-            });
-        });
-
-        // Handle window resize to reset mobile menu state if needed
-        window.addEventListener('resize', () => {
-            if (window.innerWidth > 992) {
-                navMenu.classList.remove('active');
-                mobileToggle.querySelector('i').classList.remove('fa-times');
-                mobileToggle.querySelector('i').classList.add('fa-bars');
-                document.body.style.overflow = 'auto';
-                navItemsWithDropdown.forEach(item => item.classList.remove('active'));
-            }
-        });
+        })();
     </script>
 </body>
 </html>
-
