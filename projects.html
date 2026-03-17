@@ -1,193 +1,273 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Projects | BEL Company LTD</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<meta name="theme-color" content="#1a1a1a">
+
+<title>Our Roofing Projects - James Roofing | Portfolio</title>
+<meta name="description" content="View our recent roofing projects in Houston and surrounding areas. See examples of our quality workmanship.">
+
+<!-- Preconnect for Performance -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://cdnjs.cloudflare.com">
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+
+<!-- Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏠</text></svg>">
+
+<!-- External CSS -->
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
+<!-- Skip Link for Accessibility -->
+<a href="#main-content" class="skip-link">Skip to main content</a>
 
-    <!-- Header -->
-    <header>
-        <div class="container nav-container">
-            <a href="index.html" class="logo">BEL<span>Company LTD</span></a>
-            <button class="mobile-menu-btn" id="mobileMenuBtn">
-                <i class="fas fa-bars"></i>
-            </button>
-            <nav id="mainNav">
-                <ul>
-                    <li><a href="index.html" class="nav-link">Home</a></li>
-                    <li><a href="about.html" class="nav-link">About</a></li>
-                    <li class="has-dropdown">
-                        <a href="services.html" class="nav-link">Services <i class="fas fa-chevron-down dropdown-arrow"></i></a>
-                        <ul class="dropdown" id="servicesDropdown">
-                            <li><a href="services.html#residential">Residential</a></li>
-                            <li><a href="services.html#commercial">Commercial</a></li>
-                            <li><a href="services.html#renovation">Renovation</a></li>
-                            <li><a href="services.html#planning">Planning</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="projects.html" class="nav-link active">Projects</a></li>
-                    <li><a href="contact.html" class="nav-link">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+<!-- Top Bar -->
+<div class="top-bar" role="banner">
+  <div class="container top-bar-content">
+    <div class="contact-info">
+      <a href="tel:+17135550198" class="contact-item" aria-label="Call us at (713) 555-0198">
+        <i class="fas fa-phone-alt"></i>
+        <span>(713) 555-0198</span>
+      </a>
+      <span class="contact-item" aria-label="Located in Houston, Texas">
+        <i class="fas fa-map-marker-alt"></i>
+        <span>Houston, Texas</span>
+      </span>
+    </div>
+  </div>
+</div>
 
-    <!-- Mobile Overlay -->
-    <div class="mobile-overlay" id="mobileOverlay"></div>
-
-    <!-- Page Hero -->
-    <section class="page-hero projects-bg">
-        <div class="page-hero-content">
-            <h1>Our Projects</h1>
-            <p>Delivering quality construction and trading projects across South Sudan.</p>
-        </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section class="projects-section">
-        <div class="container">
-            <h2 class="section-title fade-in">Featured Projects</h2>
-            <div class="projects-grid">
-                <!-- Project 1 -->
-                <div class="project-card fade-in">
-                    <div class="project-image">
-                        <img src="https://images.unsplash.com/photo-1518780664697-55e3ad937233?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" alt="Residential Project">
-                    </div>
-                    <div class="project-info">
-                        <h3>Juba Residential Homes</h3>
-                        <div class="project-location">
-                            <i class="fas fa-map-marker-alt"></i> Juba, South Sudan
-                        </div>
-                        <p>Construction of modern residential homes with high-quality finishes and personalized designs for each client.</p>
-                        <p><strong>Completion:</strong> 2023 | <strong>Units:</strong> 10</p>
-                    </div>
-                </div>
-
-                <!-- Project 2 -->
-                <div class="project-card fade-in">
-                    <div class="project-image">
-                        <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3&auto=format&fit=crop&w=1469&q=80" alt="Commercial Project">
-                    </div>
-                    <div class="project-info">
-                        <h3>BEL Business Tower</h3>
-                        <div class="project-location">
-                            <i class="fas fa-map-marker-alt"></i> Juba, South Sudan
-                        </div>
-                        <p>A multi-story commercial building with office spaces, conference rooms, and retail outlets in the heart of Juba.</p>
-                        <p><strong>Completion:</strong> 2022 | <strong>Floors:</strong> 10</p>
-                    </div>
-                </div>
-
-                <!-- Project 3 -->
-                <div class="project-card fade-in">
-                    <div class="project-image">
-                        <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1473&q=80" alt="Renovation Project">
-                    </div>
-                    <div class="project-info">
-                        <h3>Heritage Renovation</h3>
-                        <div class="project-location">
-                            <i class="fas fa-map-marker-alt"></i> Juba, South Sudan
-                        </div>
-                        <p>Restoration and modernization of a historical residence, preserving original architectural features while upgrading facilities.</p>
-                        <p><strong>Completion:</strong> 2021 | <strong>Duration:</strong> 12 months</p>
-                    </div>
-                </div>
-
-                <!-- Project 4 -->
-                <div class="project-card fade-in">
-                    <div class="project-image">
-                        <img src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" alt="Industrial Project">
-                    </div>
-                    <div class="project-info">
-                        <h3>Juba Logistics Hub</h3>
-                        <div class="project-location">
-                            <i class="fas fa-map-marker-alt"></i> Juba, South Sudan
-                        </div>
-                        <p>Construction of a 10,000 sqm logistics and distribution facility with advanced storage and security systems.</p>
-                        <p><strong>Completion:</strong> 2023 | <strong>Area:</strong> 10,000 sqm</p>
-                    </div>
-                </div>
-
-                <!-- Project 5 -->
-                <div class="project-card fade-in">
-                    <div class="project-image">
-                        <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" alt="Apartment Project">
-                    </div>
-                    <div class="project-info">
-                        <h3>Riverfront Apartments</h3>
-                        <div class="project-location">
-                            <i class="fas fa-map-marker-alt"></i> Juba, South Sudan
-                        </div>
-                        <p>Modern 6-story apartment complex with 24 units, rooftop garden, and 24/7 security.</p>
-                        <p><strong>Completion:</strong> 2022 | <strong>Units:</strong> 24</p>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-about">
-                    <div class="footer-logo">BEL<span>Company LTD</span></div>
-                    <p>Providing high-quality construction and trading services across South Sudan with professional excellence and client satisfaction.</p>
-                    <div class="social-icons">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-                <div class="footer-links">
-                    <h3 class="footer-heading">Quick Links</h3>
-                    <ul>
-                        <li><a href="index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
-                        <li><a href="about.html"><i class="fas fa-chevron-right"></i> About Us</a></li>
-                        <li><a href="services.html"><i class="fas fa-chevron-right"></i> Our Services</a></li>
-                        <li><a href="projects.html"><i class="fas fa-chevron-right"></i> Projects</a></li>
-                        <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footer-links">
-                    <h3 class="footer-heading">Services</h3>
-                    <ul>
-                        <li><a href="services.html#residential"><i class="fas fa-chevron-right"></i> Residential Construction</a></li>
-                        <li><a href="services.html#commercial"><i class="fas fa-chevron-right"></i> Commercial Construction</a></li>
-                        <li><a href="services.html#renovation"><i class="fas fa-chevron-right"></i> Renovation & Finishing</a></li>
-                        <li><a href="services.html#planning"><i class="fas fa-chevron-right"></i> Project Management</a></li>
-                    </ul>
-                </div>
-                <div class="footer-links">
-                    <h3 class="footer-heading">Contact Info</h3>
-                    <ul>
-                        <li><a href="tel:+211917767251"><i class="fas fa-phone"></i> +211 917 767 251</a></li>
-                        <li><a href="mailto:battousaienterprise@gmail.com"><i class="fas fa-envelope"></i> battousaienterprise@gmail.com</a></li>
-                        <li><a href="#"><i class="fas fa-map-marker-alt"></i> Juba, South Sudan</a></li>
-                        <li><a href="https://wa.me/211917767251" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="copyright">
-                <p>© 2025 BEL Company LTD. All rights reserved. | Juba, South Sudan</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Back to Top Button -->
-    <a href="#" class="back-to-top" id="backToTop">
-        <i class="fas fa-chevron-up"></i>
+<!-- Navigation -->
+<nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
+  <div class="container nav-container">
+    <a href="index.html" class="logo" aria-label="James Roofing home">
+      <i class="fas fa-home" aria-hidden="true"></i>
+      <span>James Roofing</span>
     </a>
+    <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-menu">
+      <i class="fas fa-bars" aria-hidden="true"></i>
+    </button>
+    <ul class="nav-menu" id="nav-menu">
+      <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+      <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+      <li class="nav-item has-dropdown">
+        <a href="services.html" class="nav-link" aria-haspopup="true" aria-expanded="false">
+          Services <i class="fas fa-chevron-down" aria-hidden="true"></i>
+        </a>
+        <ul class="dropdown" aria-label="Services submenu">
+          <li><a href="services.html">Roof Installation</a></li>
+          <li><a href="services.html">Roof Replacement</a></li>
+          <li><a href="services.html">Storm Damage</a></li>
+          <li><a href="services.html">Commercial Roofing</a></li>
+          <li><a href="services.html">Gutter Installation</a></li>
+        </ul>
+      </li>
+      <li class="nav-item"><a href="projects.html" class="nav-link">Projects</a></li>
+      <li class="nav-item has-dropdown">
+        <a href="servicesarea.html" class="nav-link" aria-haspopup="true" aria-expanded="false">
+          Service Areas <i class="fas fa-chevron-down" aria-hidden="true"></i>
+        </a>
+        <ul class="dropdown" aria-label="Service areas submenu">
+          <li><a href="servicesarea.html">Houston</a></li>
+          <li><a href="servicesarea.html">Katy</a></li>
+          <li><a href="servicesarea.html">Sugar Land</a></li>
+          <li><a href="servicesarea.html">The Woodlands</a></li>
+          <li><a href="servicesarea.html">Pearland</a></li>
+        </ul>
+      </li>
+      <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+      <li class="nav-item"><a href="contact.html" class="btn" style="width:100%;">Get Quote</a></li>
+    </ul>
+  </div>
+</nav>
 
-    <script src="script.js"></script>
+<!-- Main Content -->
+<main id="main-content">
+  <!-- Page Header -->
+  <section class="section-padding" style="background: #1f1f1f; text-align: center;">
+    <div class="container">
+      <h1 style="font-size: 3rem;">Our Roofing Projects</h1>
+      <p style="color: var(--text-gray); max-width: 700px; margin: 1rem auto;">Take a look at some of our recent work across Greater Houston.</p>
+    </div>
+  </section>
+
+  <!-- Gallery Grid (9 projects) -->
+  <section class="section-padding projects">
+    <div class="container">
+      <div class="projects-grid" style="grid-template-columns: repeat(3, 1fr);">
+        <!-- Project 1 -->
+        <article class="project-card fade-in">
+          <img src="https://image.qwenlm.ai/public_source/7423918e-c2a2-4cd5-b5b4-d2e84bffdbc9/1b4304b8d-c868-42a6-b643-7378cd4d6331.png" alt="The Woodlands Residence" loading="lazy">
+          <div class="project-overlay">
+            <h3>The Woodlands Residence</h3>
+            <p>Full Roof Replacement</p>
+            <p style="font-size:0.8rem; color:var(--text-light);">Location: The Woodlands, TX<br>Materials: Architectural Shingles</p>
+          </div>
+        </article>
+        <!-- Project 2 -->
+        <article class="project-card fade-in">
+          <img src="https://image.qwenlm.ai/public_source/7423918e-c2a2-4cd5-b5b4-d2e84bffdbc9/16807b49f-2935-4458-a7f1-44a015bef823.png" alt="Katy Luxury Home" loading="lazy">
+          <div class="project-overlay">
+            <h3>Katy Luxury Home</h3>
+            <p>Premium Shingle Installation</p>
+            <p style="font-size:0.8rem; color:var(--text-light);">Location: Katy, TX<br>Materials: Designer Shingles</p>
+          </div>
+        </article>
+        <!-- Project 3 -->
+        <article class="project-card fade-in">
+          <img src="https://image.qwenlm.ai/public_source/7423918e-c2a2-4cd5-b5b4-d2e84bffdbc9/103ecdcba-85ab-4f28-94bc-8e83ae60087a.png" alt="Modern Office Complex" loading="lazy">
+          <div class="project-overlay">
+            <h3>Modern Office Complex</h3>
+            <p>Standing Seam Metal Roof</p>
+            <p style="font-size:0.8rem; color:var(--text-light);">Location: Houston, TX<br>Materials: Metal Panels</p>
+          </div>
+        </article>
+        <!-- Project 4 -->
+        <article class="project-card fade-in">
+          <img src="https://image.qwenlm.ai/public_source/7423918e-c2a2-4cd5-b5b4-d2e84bffdbc9/159e963d7-4d33-4a30-8b2d-09a3b9774733.png" alt="Industrial Warehouse" loading="lazy">
+          <div class="project-overlay">
+            <h3>Industrial Warehouse</h3>
+            <p>Commercial Flat Roofing</p>
+            <p style="font-size:0.8rem; color:var(--text-light);">Location: Pasadena, TX<br>Materials: TPO Membrane</p>
+          </div>
+        </article>
+        <!-- Project 5 -->
+        <article class="project-card fade-in">
+          <img src="https://image.qwenlm.ai/public_source/7423918e-c2a2-4cd5-b5b4-d2e84bffdbc9/11894cbad-fa2e-4b47-bdb2-0a5d5d0bd521.png" alt="Sugar Land Family Home" loading="lazy">
+          <div class="project-overlay">
+            <h3>Sugar Land Family Home</h3>
+            <p>Shingle Roof Replacement</p>
+            <p style="font-size:0.8rem; color:var(--text-light);">Location: Sugar Land, TX<br>Materials: Impact-Resistant Shingles</p>
+          </div>
+        </article>
+        <!-- Project 6 -->
+        <article class="project-card fade-in">
+          <img src="https://image.qwenlm.ai/public_source/7423918e-c2a2-4cd5-b5b4-d2e84bffdbc9/1d2eb4a55-33b9-48fb-9534-501686ffd62f.png" alt="Pearland Contemporary" loading="lazy">
+          <div class="project-overlay">
+            <h3>Pearland Contemporary</h3>
+            <p>Metal Roof Installation</p>
+            <p style="font-size:0.8rem; color:var(--text-light);">Location: Pearland, TX<br>Materials: Standing Seam Metal</p>
+          </div>
+        </article>
+        <!-- Project 7 -->
+        <article class="project-card fade-in">
+          <img src="https://image.qwenlm.ai/public_source/7423918e-c2a2-4cd5-b5b4-d2e84bffdbc9/190f839ae-ca54-4499-af6b-2d3f393757e8.png" alt="Cypress Commercial Building" loading="lazy">
+          <div class="project-overlay">
+            <h3>Cypress Commercial</h3>
+            <p>Flat Roof Restoration</p>
+            <p style="font-size:0.8rem; color:var(--text-light);">Location: Cypress, TX<br>Materials: EPDM</p>
+          </div>
+        </article>
+        <!-- Project 8 -->
+        <article class="project-card fade-in">
+          <img src="https://image.qwenlm.ai/public_source/7423918e-c2a2-4cd5-b5b4-d2e84bffdbc9/1e06d54a4-ade0-4550-a9ac-9afcea5b2ac0.png" alt="Memorial Roof Repair" loading="lazy">
+          <div class="project-overlay">
+            <h3>Memorial Residence</h3>
+            <p>Storm Damage Repair</p>
+            <p style="font-size:0.8rem; color:var(--text-light);">Location: Memorial, Houston<br>Materials: Shingle Repair</p>
+          </div>
+        </article>
+        <!-- Project 9 -->
+        <article class="project-card fade-in">
+          <img src="https://image.qwenlm.ai/public_source/7423918e-c2a2-4cd5-b5b4-d2e84bffdbc9/1ea21dd2c-2a2a-4019-a28e-b01860d53517.png" alt="Katy Roof Inspection" loading="lazy">
+          <div class="project-overlay">
+            <h3>Katy New Construction</h3>
+            <p>Complete Roof Installation</p>
+            <p style="font-size:0.8rem; color:var(--text-light);">Location: Katy, TX<br>Materials: Luxury Shingles</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call To Action -->
+  <section class="section-padding" style="background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://image.qwenlm.ai/public_source/7423918e-c2a2-4cd5-b5b4-d2e84bffdbc9/13258f295-4622-48ad-b2ba-955dfa5f5df7.png'); background-size: cover; background-attachment: fixed; text-align: center;">
+    <div class="container">
+      <h2 style="color: var(--white); margin-bottom: 1.5rem;">Ready to Start Your Project?</h2>
+      <p style="color: var(--text-gray); max-width: 600px; margin: 0 auto 2rem;">Contact us today for a free consultation and estimate.</p>
+      <a href="contact.html" class="btn">Get a Free Quote</a>
+    </div>
+  </section>
+</main>
+
+<!-- Footer -->
+<footer role="contentinfo">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="logo" aria-label="James Roofing home">
+          <i class="fas fa-home" aria-hidden="true"></i>
+          <span>James Roofing</span>
+        </a>
+        <p>Providing Houston with premium roofing solutions since 2003. Quality, integrity, and customer satisfaction are our top priorities. Licensed, bonded, and insured.</p>
+        <div class="social-links">
+          <a href="https://facebook.com/jamesroofing" class="social-icon" aria-label="Follow us on Facebook" rel="noopener noreferrer" target="_blank">
+            <i class="fab fa-facebook-f" aria-hidden="true"></i>
+          </a>
+          <a href="https://instagram.com/jamesroofing" class="social-icon" aria-label="Follow us on Instagram" rel="noopener noreferrer" target="_blank">
+            <i class="fab fa-instagram" aria-hidden="true"></i>
+          </a>
+          <a href="https://linkedin.com/company/jamesroofing" class="social-icon" aria-label="Follow us on LinkedIn" rel="noopener noreferrer" target="_blank">
+            <i class="fab fa-linkedin-in" aria-hidden="true"></i>
+          </a>
+          <a href="https://twitter.com/jamesroofing" class="social-icon" aria-label="Follow us on Twitter" rel="noopener noreferrer" target="_blank">
+            <i class="fab fa-twitter" aria-hidden="true"></i>
+          </a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul class="footer-links">
+          <li><a href="services.html">Residential Roofing</a></li>
+          <li><a href="services.html">Commercial Roofing</a></li>
+          <li><a href="services.html">Roof Repair</a></li>
+          <li><a href="services.html">Storm Damage</a></li>
+          <li><a href="services.html">Gutter Installation</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Service Areas</h4>
+        <ul class="footer-links">
+          <li><a href="servicesarea.html">Houston</a></li>
+          <li><a href="servicesarea.html">Katy</a></li>
+          <li><a href="servicesarea.html">Sugar Land</a></li>
+          <li><a href="servicesarea.html">The Woodlands</a></li>
+          <li><a href="servicesarea.html">Pearland</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <p>&copy; 2026 James Roofing. All Rights Reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+    </div>
+  </div>
+</footer>
+
+<!-- Back to Top Button -->
+<button class="back-to-top" id="backToTop" aria-label="Back to top">
+  <i class="fas fa-chevron-up" aria-hidden="true"></i>
+</button>
+
+<!-- External JS -->
+<script src="script.js"></script>
 </body>
 </html>
