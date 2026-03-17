@@ -1,62 +1,264 @@
-<!-- ========== services.html ========== -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CityBuild | Services</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<meta name="theme-color" content="#1a1a1a">
+
+<title>Our Roofing Services - James Roofing | Houston</title>
+<meta name="description" content="James Roofing offers expert roof installation, repair, replacement, storm damage, and commercial roofing in Houston. Free estimates.">
+
+<!-- Preconnect for Performance -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://cdnjs.cloudflare.com">
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+
+<!-- Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏠</text></svg>">
+
+<!-- External CSS -->
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <nav class="navbar">
-        <div class="logo">CityBuild<span>CONSTRUCTION & ENGINEERING</span></div>
-        <button class="hamburger" id="hamburger"><i class="fas fa-bars"></i></button>
-        <div class="nav-links" id="navLinks">
-            <a href="index.html">Home</a>
-            <a href="about.html">About</a>
-            <a href="services.html" class="active">Services</a>
-            <a href="gallery.html">Gallery</a>
-            <a href="contact.html">Contact</a>
-        </div>
-    </nav>
+<!-- Skip Link for Accessibility -->
+<a href="#main-content" class="skip-link">Skip to main content</a>
 
-    <div class="page-header">
-        <h1>Our Services</h1>
+<!-- Top Bar -->
+<div class="top-bar" role="banner">
+  <div class="container top-bar-content">
+    <div class="contact-info">
+      <a href="tel:+17135550198" class="contact-item" aria-label="Call us at (713) 555-0198">
+        <i class="fas fa-phone-alt"></i>
+        <span>(713) 555-0198</span>
+      </a>
+      <span class="contact-item" aria-label="Located in Houston, Texas">
+        <i class="fas fa-map-marker-alt"></i>
+        <span>Houston, Texas</span>
+      </span>
     </div>
+  </div>
+</div>
 
-    <section>
-        <div class="services-grid">
-            <div class="service-card"><i class="fas fa-hard-hat"></i><h3>Construction</h3><p>Residential, commercial & industrial buildings – delivered with precision.</p><a href="contact.html" class="btn btn-small">Request Quote</a></div>
-            <div class="service-card"><i class="fas fa-wrench"></i><h3>Welding</h3><p>Structural steel, gates, railings, and custom fabrication.</p><a href="contact.html" class="btn btn-small">Request Quote</a></div>
-            <div class="service-card"><i class="fas fa-draw-polygon"></i><h3>Architectural & Structural Design</h3><p>Innovative designs with full engineering calculations.</p><a href="contact.html" class="btn btn-small">Request Quote</a></div>
-            <div class="service-card"><i class="fas fa-bolt"></i><h3>Electrical Installation</h3><p>Wiring, panels, lighting, and safety systems.</p><a href="contact.html" class="btn btn-small">Request Quote</a></div>
-            <div class="service-card"><i class="fas fa-water"></i><h3>Plumbing</h3><p>Water supply, drainage, sanitary installations.</p><a href="contact.html" class="btn btn-small">Request Quote</a></div>
-            <div class="service-card"><i class="fas fa-paint-brush"></i><h3>Painting</h3><p>Interior/exterior finishing, texture coatings.</p><a href="contact.html" class="btn btn-small">Request Quote</a></div>
-            <div class="service-card"><i class="fas fa-home"></i><h3>Roofing</h3><p>Hip roof, hidden roof, slab roofing – durable & weatherproof.</p><a href="contact.html" class="btn btn-small">Request Quote</a></div>
+<!-- Navigation -->
+<nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
+  <div class="container nav-container">
+    <a href="index.html" class="logo" aria-label="James Roofing home">
+      <i class="fas fa-home" aria-hidden="true"></i>
+      <span>James Roofing</span>
+    </a>
+    <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-menu">
+      <i class="fas fa-bars" aria-hidden="true"></i>
+    </button>
+    <ul class="nav-menu" id="nav-menu">
+      <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+      <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+      <li class="nav-item has-dropdown">
+        <a href="services.html" class="nav-link" aria-haspopup="true" aria-expanded="false">
+          Services <i class="fas fa-chevron-down" aria-hidden="true"></i>
+        </a>
+        <ul class="dropdown" aria-label="Services submenu">
+          <li><a href="services.html">Roof Installation</a></li>
+          <li><a href="services.html">Roof Replacement</a></li>
+          <li><a href="services.html">Storm Damage</a></li>
+          <li><a href="services.html">Commercial Roofing</a></li>
+          <li><a href="services.html">Gutter Installation</a></li>
+        </ul>
+      </li>
+      <li class="nav-item"><a href="projects.html" class="nav-link">Projects</a></li>
+      <li class="nav-item has-dropdown">
+        <a href="servicesarea.html" class="nav-link" aria-haspopup="true" aria-expanded="false">
+          Service Areas <i class="fas fa-chevron-down" aria-hidden="true"></i>
+        </a>
+        <ul class="dropdown" aria-label="Service areas submenu">
+          <li><a href="servicesarea.html">Houston</a></li>
+          <li><a href="servicesarea.html">Katy</a></li>
+          <li><a href="servicesarea.html">Sugar Land</a></li>
+          <li><a href="servicesarea.html">The Woodlands</a></li>
+          <li><a href="servicesarea.html">Pearland</a></li>
+        </ul>
+      </li>
+      <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+      <li class="nav-item"><a href="contact.html" class="btn" style="width:100%;">Get Quote</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Main Content -->
+<main id="main-content">
+  <!-- Page Header -->
+  <section class="section-padding" style="background: #1f1f1f; text-align: center;">
+    <div class="container">
+      <h1 style="font-size: 3rem;">Our Roofing Services</h1>
+      <p style="color: var(--text-gray); max-width: 700px; margin: 1rem auto;">Comprehensive roofing solutions for residential and commercial properties in Houston.</p>
+    </div>
+  </section>
+
+  <!-- Services List -->
+  <section class="section-padding services">
+    <div class="container">
+      <div class="services-grid">
+        <!-- Service 1 -->
+        <article class="service-card fade-in">
+          <div class="service-img">
+            <img src="https://image.qwenlm.ai/public_source/7423918e-c2a2-4cd5-b5b4-d2e84bffdbc9/11894cbad-fa2e-4b47-bdb2-0a5d5d0bd521.png" alt="Shingle Roofing" loading="lazy">
+          </div>
+          <div class="service-content">
+            <div class="service-icon"><i class="fas fa-home"></i></div>
+            <h3>Roof Installation</h3>
+            <p>Complete new roof installation for new constructions or roof replacements. We work with asphalt shingles, metal, tile, and more.</p>
+            <a href="contact.html" class="service-link">Get a Quote <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </article>
+        <!-- Service 2 -->
+        <article class="service-card fade-in">
+          <div class="service-img">
+            <img src="https://image.qwenlm.ai/public_source/7423918e-c2a2-4cd5-b5b4-d2e84bffdbc9/1e06d54a4-ade0-4550-a9ac-9afcea5b2ac0.png" alt="Roof Repair" loading="lazy">
+          </div>
+          <div class="service-content">
+            <div class="service-icon"><i class="fas fa-tools"></i></div>
+            <h3>Roof Repair</h3>
+            <p>Expert leak detection, shingle replacement, flashing repair, and patching to extend the life of your roof and prevent water damage.</p>
+            <a href="contact.html" class="service-link">Get a Quote <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </article>
+        <!-- Service 3 -->
+        <article class="service-card fade-in">
+          <div class="service-img">
+            <img src="https://image.qwenlm.ai/public_source/7423918e-c2a2-4cd5-b5b4-d2e84bffdbc9/190f839ae-ca54-4499-af6b-2d3f393757e8.png" alt="Commercial Roofing" loading="lazy">
+          </div>
+          <div class="service-content">
+            <div class="service-icon"><i class="fas fa-building"></i></div>
+            <h3>Commercial Roofing</h3>
+            <p>Flat roofs, TPO, EPDM, modified bitumen, and metal systems for businesses, warehouses, and multi-family properties.</p>
+            <a href="contact.html" class="service-link">Get a Quote <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </article>
+        <!-- Service 4 -->
+        <article class="service-card fade-in">
+          <div class="service-img">
+            <img src="https://image.qwenlm.ai/public_source/7423918e-c2a2-4cd5-b5b4-d2e84bffdbc9/1ae51aef1-3bf4-493f-94d5-02ae0555bb61.png" alt="Storm Damage Repair" loading="lazy">
+          </div>
+          <div class="service-content">
+            <div class="service-icon"><i class="fas fa-cloud-showers-heavy"></i></div>
+            <h3>Storm Damage Repair</h3>
+            <p>Emergency services for hail, wind, and storm-damaged roofs. We assist with insurance claims and restore your property quickly.</p>
+            <a href="contact.html" class="service-link">Get a Quote <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </article>
+        <!-- Service 5 -->
+        <article class="service-card fade-in">
+          <div class="service-img">
+            <img src="https://image.qwenlm.ai/public_source/7423918e-c2a2-4cd5-b5b4-d2e84bffdbc9/1ea21dd2c-2a2a-4019-a28e-b01860d53517.png" alt="Roof Inspection" loading="lazy">
+          </div>
+          <div class="service-content">
+            <div class="service-icon"><i class="fas fa-clipboard-check"></i></div>
+            <h3>Roof Inspection</h3>
+            <p>Detailed annual inspections to identify issues early. Includes drone and thermal imaging for accurate diagnostics.</p>
+            <a href="contact.html" class="service-link">Get a Quote <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </article>
+        <!-- Service 6 -->
+        <article class="service-card fade-in">
+          <div class="service-img">
+            <img src="https://image.qwenlm.ai/public_source/7423918e-c2a2-4cd5-b5b4-d2e84bffdbc9/1d2eb4a55-33b9-48fb-9534-501686ffd62f.png" alt="Emergency Roofing" loading="lazy">
+          </div>
+          <div class="service-content">
+            <div class="service-icon"><i class="fas fa-clock"></i></div>
+            <h3>Emergency Roofing</h3>
+            <p>24/7 emergency tarping and temporary repairs to secure your property after unexpected damage. Fast response time.</p>
+            <a href="contact.html" class="service-link">Get a Quote <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call To Action -->
+  <section class="section-padding" style="background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://image.qwenlm.ai/public_source/7423918e-c2a2-4cd5-b5b4-d2e84bffdbc9/13258f295-4622-48ad-b2ba-955dfa5f5df7.png'); background-size: cover; background-attachment: fixed; text-align: center;">
+    <div class="container">
+      <h2 style="color: var(--white); margin-bottom: 1.5rem;">Let Us Build Your Roof Today</h2>
+      <p style="color: var(--text-gray); max-width: 600px; margin: 0 auto 2rem;">Contact us for a free, no-obligation quote and expert advice.</p>
+      <a href="contact.html" class="btn">Get a Free Quote</a>
+    </div>
+  </section>
+</main>
+
+<!-- Footer -->
+<footer role="contentinfo">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="logo" aria-label="James Roofing home">
+          <i class="fas fa-home" aria-hidden="true"></i>
+          <span>James Roofing</span>
+        </a>
+        <p>Providing Houston with premium roofing solutions since 2003. Quality, integrity, and customer satisfaction are our top priorities. Licensed, bonded, and insured.</p>
+        <div class="social-links">
+          <a href="https://facebook.com/jamesroofing" class="social-icon" aria-label="Follow us on Facebook" rel="noopener noreferrer" target="_blank">
+            <i class="fab fa-facebook-f" aria-hidden="true"></i>
+          </a>
+          <a href="https://instagram.com/jamesroofing" class="social-icon" aria-label="Follow us on Instagram" rel="noopener noreferrer" target="_blank">
+            <i class="fab fa-instagram" aria-hidden="true"></i>
+          </a>
+          <a href="https://linkedin.com/company/jamesroofing" class="social-icon" aria-label="Follow us on LinkedIn" rel="noopener noreferrer" target="_blank">
+            <i class="fab fa-linkedin-in" aria-hidden="true"></i>
+          </a>
+          <a href="https://twitter.com/jamesroofing" class="social-icon" aria-label="Follow us on Twitter" rel="noopener noreferrer" target="_blank">
+            <i class="fab fa-twitter" aria-hidden="true"></i>
+          </a>
         </div>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul class="footer-links">
+          <li><a href="services.html">Residential Roofing</a></li>
+          <li><a href="services.html">Commercial Roofing</a></li>
+          <li><a href="services.html">Roof Repair</a></li>
+          <li><a href="services.html">Storm Damage</a></li>
+          <li><a href="services.html">Gutter Installation</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Service Areas</h4>
+        <ul class="footer-links">
+          <li><a href="servicesarea.html">Houston</a></li>
+          <li><a href="servicesarea.html">Katy</a></li>
+          <li><a href="servicesarea.html">Sugar Land</a></li>
+          <li><a href="servicesarea.html">The Woodlands</a></li>
+          <li><a href="servicesarea.html">Pearland</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <p>&copy; 2025 James Roofing. All Rights Reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+    </div>
+  </div>
+</footer>
 
-        <!-- CTA -->
-        <div class="cta-common" style="margin-top:5rem;">
-            <h2>Need a tailored solution?</h2>
-            <a href="contact.html" class="btn">Request a Quote</a>
-        </div>
-    </section>
+<!-- Back to Top Button -->
+<button class="back-to-top" id="backToTop" aria-label="Back to top">
+  <i class="fas fa-chevron-up" aria-hidden="true"></i>
+</button>
 
-    <footer>
-        <div class="footer-grid">
-            <div><div class="footer-logo">CityBuild<span>Construction & Engineering Co. Ltd</span></div><p style="margin-top:1.5rem; color:#b9b3a8;">Excellence since 2026</p></div>
-            <div class="footer-links"><h4 style="color:var(--gold);">Quick Links</h4><a href="index.html">Home</a><a href="about.html">About</a><a href="services.html">Services</a><a href="gallery.html">Gallery</a><a href="contact.html">Contact</a></div>
-            <div class="footer-links"><h4 style="color:var(--gold);">Contact</h4><p><i class="fas fa-phone"></i> +211 924 555 436</p><p><i class="fab fa-whatsapp"></i> +256 777 218 912</p><p><i class="fas fa-envelope"></i> info@citybuildcoltd.com</p></div>
-            <div><h4 style="color:var(--gold);">Follow Us</h4><div class="social-icons"><a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-twitter"></i></a><a href="#"><i class="fab fa-linkedin-in"></i></a><a href="#"><i class="fab fa-instagram"></i></a></div></div>
-        </div>
-        <div class="copyright">© 2026 CityBuild Construction and Engineering Co. Ltd. All Rights Reserved.</div>
-    </footer>
-
-    <div id="lightbox" class="lightbox"><span class="lightbox-close">&times;</span><img id="lightbox-img" src="" alt=""></div>
-    <script src="script.js"></script>
+<!-- External JS -->
+<script src="script.js"></script>
 </body>
 </html>
