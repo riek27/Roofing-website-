@@ -1313,3 +1313,26 @@ footer {
   white-space: nowrap;
   border: 0;
 }
+/* --- HALF BACKGROUND IMAGE FOR INTERIOR PAGES (about, services, projects, servicesarea, contact) --- */
+body.interior-page {
+    /* Replace the URL with your actual image */
+    background-image: url('assets/bigroof.jpg');
+    background-repeat: no-repeat;
+    background-position: right center;      /* Image sits on the right half */
+    background-size: 50% auto;              /* Takes exactly 50% width */
+    background-attachment: fixed;            /* Stays fixed while scrolling */
+}
+
+/* Optional adjustments for smaller screens */
+@media (max-width: 992px) {
+    body.interior-page {
+        background-size: cover;              /* Full width on tablets */
+        background-position: center;
+    }
+}
+
+@media (max-width: 768px) {
+    body.interior-page {
+        background-image: none;               /* Remove on mobile if distracting */
+    }
+}
