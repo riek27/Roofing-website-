@@ -1,148 +1,270 @@
-// ----- script.js - clean and functional -----
+(function() {
+  'use strict';
 
-// Wait for DOM to be fully loaded
-document.addEventListener('DOMContentLoaded', function() {
+  // Typing animation with improved mobile handling
+  const textElement = document.querySelector('.typing-container');
+  if (textElement) {
+    const phrases = [
+      "Professional Roofing Experts",
+      "Houston's Trusted Roofing Company",
+      "Quality Roof Installation & Repair",
+      "Built to Protect Your Home"
+    ];
+    let phraseIndex = 0, charIndex = 0, isDeleting = false, typeSpeed = 100;
 
-    // ========== MOBILE MENU TOGGLE ==========
-    const hamburger = document.getElementById('hamburger');
-    const navLinks = document.getElementById('navLinks');
-    const overlay = document.createElement('div'); // Create overlay dynamically
+    function type() {
+      const currentPhrase = phrases[phraseIndex];
+      if (isDeleting) {
+        textElement.textContent = currentPhrase.substring(0, charIndex - 1);
+        charIndex--;
+        typeSpeed = 50;
+      } else {
+        textElement.textContent = currentPhrase.substring(0, charIndex + 1);
+        charIndex++;
+        typeSpeed = 100;
+      }
 
-    if (hamburger && navLinks) {
-        // Setup overlay
-        overlay.className = 'menu-overlay';
-        document.body.appendChild(overlay);
+      if (!isDeleting && charIndex === currentPhrase.length) {
+        isDeleting = true;
+        typeSpeed = 2500;
+      } else if (isDeleting && charIndex === 0) {
+        isDeleting = false;
+        phraseIndex = (phraseIndex + 1) % phrases.length;
+        typeSpeed = 500;
+      }
 
-        // Toggle menu on hamburger click
-        hamburger.addEventListener('click', function(e) {
-            e.stopPropagation();
-            navLinks.classList.toggle('active');
-            overlay.classList.toggle('active');
-            // Change icon (optional)
-            const icon = hamburger.querySelector('i');
-            if (navLinks.classList.contains('active')) {
-                icon.classList.remove('fa-bars');
-                icon.classList.add('fa-times');
-            } else {
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
-            }
-        });
-
-        // Close menu when clicking on overlay
-        overlay.addEventListener('click', function() {
-            navLinks.classList.remove('active');
-            overlay.classList.remove('active');
-            const icon = hamburger.querySelector('i');
-            icon.classList.remove('fa-times');
-            icon.classList.add('fa-bars');
-        });
-
-        // Close menu when a nav link is clicked (for better UX)
-        const navLinksItems = navLinks.querySelectorAll('a');
-        navLinksItems.forEach(link => {
-            link.addEventListener('click', function() {
-                navLinks.classList.remove('active');
-                overlay.classList.remove('active');
-                const icon = hamburger.querySelector('i');
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
-            });
-        });
-
-        // Close menu on escape key
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape' && navLinks.classList.contains('active')) {
-                navLinks.classList.remove('active');
-                overlay.classList.remove('active');
-                const icon = hamburger.querySelector('i');
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
-            }
-        });
+      setTimeout(type, typeSpeed);
     }
+    type();
+  }
 
-    // ========== GALLERY LIGHTBOX ==========
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImg = document.getElementById('lightbox-img');
-    const closeBtn = document.querySelector('.lightbox-close');
-    const galleryItems = document.querySelectorAll('.gallery-item');
+  // Sticky navigation with smooth transition
+  const navbar = document.getElementById('navbar');
+  let lastScroll = 0;
 
-    if (lightbox && lightboxImg && closeBtn && galleryItems.length > 0) {
-        // Open lightbox on gallery item click
-        galleryItems.forEach(item => {
-            item.addEventListener('click', function() {
-                const img = this.querySelector('img');
-                if (img) {
-                    lightboxImg.src = img.src;
-                    lightboxImg.alt = img.alt;
-                    lightbox.classList.add('active');
-                }
-            });
-        });
-
-        // Close lightbox functions
-        const closeLightbox = function() {
-            lightbox.classList.remove('active');
-            lightboxImg.src = ''; // Clear src to stop loading if any
-        };
-
-        closeBtn.addEventListener('click', closeLightbox);
-
-        // Close on overlay click
-        lightbox.addEventListener('click', function(e) {
-            if (e.target === lightbox) {
-                closeLightbox();
-            }
-        });
-
-        // Close on escape key
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape' && lightbox.classList.contains('active')) {
-                closeLightbox();
-            }
-        });
+  window.addEventListener('scroll', () => {
+    const currentScroll = window.scrollY;
+    
+    if (currentScroll > 50) {
+      navbar.classList.add('scrolled');
+    } else {
+      navbar.classList.remove('scrolled');
     }
+    
+    lastScroll = currentScroll;
+  }, { passive: true });
 
-    // ========== FORM SUBMISSION PREVENTION (optional) ==========
-    // Prevents actual submit for demo; remove or modify for backend integration
-    const inquiryForm = document.getElementById('inquiryForm');
-    if (inquiryForm) {
-        inquiryForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Thank you for your inquiry. We will contact you soon!');
-            // Optionally, you can add AJAX fetch here to send data to a server
-            inquiryForm.reset(); // Clear form after submission
-        });
+  // Mobile menu
+  const mobileToggle = document.getElementById('mobile-toggle');
+  const navMenu = document.getElementById('nav-menu');
+  const dropdownParents = document.querySelectorAll('.has-dropdown');
+  const body = document.body;
+  const navLinks = document.querySelectorAll('.nav-link');
+
+  const closeMenu = () => {
+    navMenu.classList.remove('active');
+    mobileToggle.querySelector('i').className = 'fas fa-bars';
+    mobileToggle.setAttribute('aria-expanded', 'false');
+    body.style.overflow = '';
+    document.body.style.touchAction = '';
+  };
+
+  const openMenu = () => {
+    navMenu.classList.add('active');
+    mobileToggle.querySelector('i').className = 'fas fa-times';
+    mobileToggle.setAttribute('aria-expanded', 'true');
+    body.style.overflow = 'hidden';
+    document.body.style.touchAction = 'none';
+  };
+
+  mobileToggle.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const isActive = navMenu.classList.contains('active');
+    if (isActive) {
+      closeMenu();
+    } else {
+      openMenu();
     }
+  });
 
-    // ========== HIGHLIGHT ACTIVE PAGE IN NAV (already set in HTML, but ensure) ==========
-    // No extra code needed because each page has 'active' class manually set in HTML.
-    // However, if you want to dynamically set based on URL (for single page app), uncomment below:
-    /*
-    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-    const navLinksAll = document.querySelectorAll('.nav-links a');
-    navLinksAll.forEach(link => {
-        const linkPage = link.getAttribute('href');
-        if (linkPage === currentPage) {
-            link.classList.add('active');
-        } else {
-            link.classList.remove('active');
-        }
+  // Close menu when clicking outside
+  document.addEventListener('click', (e) => {
+    if (navMenu.classList.contains('active') && 
+        !navMenu.contains(e.target) && 
+        !mobileToggle.contains(e.target)) {
+      closeMenu();
+    }
+  });
+
+  // Close menu on escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && navMenu.classList.contains('active')) {
+      closeMenu();
+      mobileToggle.focus();
+    }
+  });
+
+  // Mobile dropdown functionality
+  function initMobileDropdowns() {
+    const isMobile = window.innerWidth <= 992;
+    
+    dropdownParents.forEach(item => {
+      const link = item.querySelector('.nav-link');
+      if (!link) return;
+      
+      link.removeEventListener('click', mobileDropdownHandler);
+      
+      if (isMobile) {
+        link.addEventListener('click', mobileDropdownHandler);
+      }
     });
-    */
+  }
 
-    // ========== SMOOTH SCROLL FOR ANCHOR LINKS (if any) ==========
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            const href = this.getAttribute('href');
-            if (href !== "#" && document.querySelector(href)) {
-                e.preventDefault();
-                document.querySelector(href).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            }
-        });
+  function mobileDropdownHandler(e) {
+    const parent = this.closest('.has-dropdown');
+    if (!parent) return;
+    
+    // Only prevent default on mobile
+    if (window.innerWidth <= 992) {
+      e.preventDefault();
+      const isActive = parent.classList.toggle('active');
+      this.setAttribute('aria-expanded', isActive);
+    }
+  }
+
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 992) {
+      dropdownParents.forEach(p => {
+        p.classList.remove('active');
+        const link = p.querySelector('.nav-link');
+        if (link) link.setAttribute('aria-expanded', 'false');
+      });
+      closeMenu();
+    } else {
+      initMobileDropdowns();
+    }
+  });
+
+  initMobileDropdowns();
+
+  // Close menu when clicking nav links (except dropdowns on mobile)
+  navLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      const parent = link.closest('.has-dropdown');
+      const isMobile = window.innerWidth <= 992;
+      
+      // Don't close on mobile dropdown toggle
+      if (isMobile && parent) {
+        return;
+      }
+      
+      closeMenu();
     });
+  });
 
-});
+  // Intersection Observer for fade-in animations
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // Form submission handling
+  const forms = document.querySelectorAll('form');
+  forms.forEach(form => {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      // Get form data
+      const formData = new FormData(form);
+      const data = Object.fromEntries(formData.entries());
+      
+      // Simulate form submission (replace with actual API call)
+      const submitBtn = form.querySelector('button[type="submit"]');
+      const originalText = submitBtn.innerHTML;
+      
+      submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+      submitBtn.disabled = true;
+      
+      // Simulate API delay
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      
+      // Show success message
+      alert('Thank you for your message! We will contact you within 24 hours.');
+      form.reset();
+      
+      submitBtn.innerHTML = originalText;
+      submitBtn.disabled = false;
+    });
+  });
+
+  // Back to top button
+  const backToTop = document.getElementById('backToTop');
+  const scrollThreshold = 500;
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > scrollThreshold) {
+      backToTop.classList.add('visible');
+    } else {
+      backToTop.classList.remove('visible');
+    }
+  }, { passive: true });
+
+  backToTop.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  // Smooth scroll for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const targetId = this.getAttribute('href');
+      if (targetId === '#') return;
+      
+      const target = document.querySelector(targetId);
+      if (target) {
+        e.preventDefault();
+        const navHeight = navbar.classList.contains('scrolled') ? 65 : 125;
+        const targetPosition = target.getBoundingClientRect().top + window.scrollY - navHeight;
+        
+        window.scrollTo({
+          top: targetPosition,
+          behavior: 'smooth'
+        });
+      }
+    });
+  });
+
+  // Add loaded class to body after page load
+  window.addEventListener('load', () => {
+    document.body.classList.add('loaded');
+  });
+
+  // Performance: Lazy load images that aren't already lazy
+  if ('loading' in HTMLImageElement.prototype) {
+    const images = document.querySelectorAll('img[loading="lazy"]');
+    images.forEach(img => {
+      img.src = img.src;
+    });
+  }
+
+  // Prevent zoom on double tap for mobile
+  let lastTouchEnd = 0;
+  document.addEventListener('touchend', (e) => {
+    const now = Date.now();
+    if (now - lastTouchEnd <= 300) {
+      e.preventDefault();
+    }
+    lastTouchEnd = now;
+  }, false);
+
+})();
